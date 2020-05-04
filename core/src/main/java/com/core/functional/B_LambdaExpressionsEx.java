@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * Lambda Expressions Multithreading & Collections
  *
- *
  * @author sunsingh
  */
 public class B_LambdaExpressionsEx {

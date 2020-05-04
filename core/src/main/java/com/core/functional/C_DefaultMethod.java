@@ -2,15 +2,14 @@ package com.core.functional;
 
 /**
  * Default method or Virtual Extension Method or Defender Method.
- *
+ * <p>
  * Default method cannot overwrite the Object methods. Ex : hashcode()
- * 
+ * <p>
  * If a class is implementing multiple interfaces and those interfaces has the same default method
  * then that method must be overwritten by class, else compiler will get confused.
- * @Refer - exampleMultipleInheritance
- * 
  *
  * @author sunsingh
+ * @Refer - exampleMultipleInheritance
  */
 public class C_DefaultMethod {
 
@@ -30,8 +29,8 @@ public class C_DefaultMethod {
         car.fuelType();
 
     }
-    
-     public static void exampleMultipleInheritance() {
+
+    public static void exampleMultipleInheritance() {
         Puffins puffins = new Puffins();
         puffins.swim();
         puffins.fly();

@@ -1,7 +1,8 @@
 package com.core.functional;
 
 /**
- * All the static method must be defined within the interface and keep objected related information in classes. In other
+ * All the static method must be defined within the interface and keep objected related information in classes.
+ * In other
  * words, keep all static content in interface.
  *
  * Static method defined in the interface can only be accessed through Interface name only.
