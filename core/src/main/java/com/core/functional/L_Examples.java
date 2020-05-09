@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class L_Examples {
 
     public static void main(String[] args) {
-        List<Employee> list = new ArrayList<>();
+        ArrayList<Employee> list = new ArrayList<>();
         list.add(new Employee(1, "John", "Admin"));
         list.add(new Employee(2, "David", "Manager"));
         list.add(new Employee(3, "Kim", "Admin"));
