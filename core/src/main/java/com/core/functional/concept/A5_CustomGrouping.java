@@ -14,7 +14,7 @@ public class A5_CustomGrouping {
         System.out.println(map);
     }
 
-    public static <R,T> Map<R,List<T>> groupBy(List<T> list, KeyMapper<T, R> function){
+    public static <T,R> Map<R,List<T>> groupBy(List<T> list, KeyMapper<? super T, ? extends R> function){
         Map<R,List<T>> map = new HashMap<>();
         for(T t : list){
             R key = function.accept(t);
