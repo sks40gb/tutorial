@@ -2,7 +2,6 @@ package com.core.generic.custom;
 
 import com.core.generic.Physics;
 import com.core.generic.Subject;
-import java.util.function.Predicate;
 
 /**
  *
@@ -24,7 +23,7 @@ import java.util.function.Predicate;
  *
  * @author Sunil
  */
-public class AllPossibleCases<A,B extends Subject> {
+public class A1_AllPossibleCases<A,B extends Subject> {
 //public class AllPossibleCases<A, B super Subject> {   <-- invalid, we cannot use super while defining generics.
 
     A a;
@@ -54,11 +53,11 @@ public class AllPossibleCases<A,B extends Subject> {
     }
 
     public static void main(String[] args) {
-        AllPossibleCases<String, Subject> s = new AllPossibleCases<>();
+        A1_AllPossibleCases<String, Subject> s = new A1_AllPossibleCases<>();
 
-        AllPossibleCases<String, ? super Subject> s2 = new AllPossibleCases<>();
-        AllPossibleCases<String, ?> s3 = new AllPossibleCases<>();
-        AllPossibleCases<String, ? extends Subject> s4 = new AllPossibleCases<>();
+        A1_AllPossibleCases<String, ? super Subject> s2 = new A1_AllPossibleCases<>();
+        A1_AllPossibleCases<String, ?> s3 = new A1_AllPossibleCases<>();
+        A1_AllPossibleCases<String, ? extends Subject> s4 = new A1_AllPossibleCases<>();
 
         // B
         Subject subject = s.getB();
