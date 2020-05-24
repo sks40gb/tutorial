@@ -1,16 +1,18 @@
 package com.core.reflaction;
 
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- *
  * @author sunil
  */
 public class Reflaction_2 {
 
-    public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+    @Test
+    public void main() throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
         PublicEmployee emp = new PublicEmployee("sun", 32, true);
         Class c = emp.getClass();
 
@@ -46,6 +48,7 @@ class PublicEmployee {
         this.roll = roll;
         this.isMale = isMale;
     }
+
     public String name;
     public int roll;
     public boolean isMale;
@@ -58,6 +61,7 @@ class PrivateEmployee {
         this.roll = roll;
         this.isMale = isMale;
     }
+
     private String name;
     private int roll;
     private boolean isMale;

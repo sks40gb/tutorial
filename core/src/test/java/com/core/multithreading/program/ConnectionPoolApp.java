@@ -1,5 +1,7 @@
 package com.core.multithreading.program;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -7,7 +9,8 @@ import java.util.logging.Logger;
 
 public class ConnectionPoolApp {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
         ConnectionPool connectionPool = new ConnectionPool();
         for (int i = 0; i < 100; i++) {
             new Thread(() -> {

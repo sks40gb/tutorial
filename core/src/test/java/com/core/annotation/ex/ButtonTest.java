@@ -1,13 +1,14 @@
 package com.core.annotation.ex;
 
-import java.awt.*;
-
+import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ButtonTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
 
         ButtonFrame frame = new ButtonFrame();
 

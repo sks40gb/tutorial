@@ -3,7 +3,6 @@ package com.core.annotation.concept;
 import java.lang.annotation.Documented;
 
 /**
- *
  * @author Sunil
  */
 @Documented

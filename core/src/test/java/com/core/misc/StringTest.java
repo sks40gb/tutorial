@@ -1,17 +1,15 @@
 
 package com.core.misc;
 
-/** 
- *
+import org.junit.jupiter.api.Test;
+
+/**
  * @author Sunil
  */
 public class StringTest {
-    
-    public static void main(String[] args) {
-        compareString();
-    }
 
-    private static void compareString(){
+    @Test
+    public void compareString() {
         String s1 = "ABC";
         String s2 = "ABC";
         String s3 = new String("ABC");

@@ -1,12 +1,15 @@
 package com.core.java8;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Spliterator;
 import java.util.stream.Stream;
 
 public class SpliteratorApp {
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         // Create an array list for doubles. 
         ArrayList<Integer> list = new ArrayList<>();
 

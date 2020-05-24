@@ -1,5 +1,7 @@
 package com.core.multithreading;
 
+import org.junit.jupiter.api.Test;
+
 public class DaemonThread extends Thread {
 
     public DaemonThread(String name) {
@@ -15,7 +17,8 @@ public class DaemonThread extends Thread {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
 
         DaemonThread t1 = new DaemonThread("t1");
         DaemonThread t2 = new DaemonThread("t2");

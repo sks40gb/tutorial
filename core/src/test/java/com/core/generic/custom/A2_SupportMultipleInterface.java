@@ -1,5 +1,7 @@
 package com.core.generic.custom;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.*;
 
 /**
@@ -7,7 +9,8 @@ import java.io.*;
  */
 public class A2_SupportMultipleInterface {
 
-    public static void main(String[] args) throws IOException {
+    @Test
+    public void main()  throws IOException {
         write();
 
         DataInputStream stream = new DataInputStream(new FileInputStream("src/main/resources/person"));

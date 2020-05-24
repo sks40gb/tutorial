@@ -1,5 +1,7 @@
 package com.core.misc;
 
+import org.junit.jupiter.api.Test;
+
 /**
  *
  * @author sunil
@@ -43,7 +45,8 @@ public class EnumTest {
         }
     }
     
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
 
         Day day = Day.FRIDAY;
         System.out.println(Day.FRIDAY.getDayNumber());

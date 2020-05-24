@@ -1,5 +1,7 @@
 package com.core.java8;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,7 +11,8 @@ import java.util.List;
  */
 public class ParallelSteamApp {
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
 
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
         System.out.println("In serial fashion");

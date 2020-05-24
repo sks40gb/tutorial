@@ -1,5 +1,7 @@
 package com.core.multithreading;
 
+import org.junit.jupiter.api.Test;
+
 class Util {
 
     // Util class to sleep a thread 
@@ -80,7 +82,8 @@ class Thread2 extends Thread {
 
 public class Deadlock {
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         // creating one object 
         Shared s1 = new Shared();
 

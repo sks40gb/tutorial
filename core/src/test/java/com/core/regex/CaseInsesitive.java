@@ -1,5 +1,7 @@
 package com.core.regex;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +15,8 @@ public class CaseInsesitive {
       return "text";   
     }
     
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         
         String txt = "SUnilxxsunIl";
         //(?i) will search the String sunil. It makes it Case Insesitive.

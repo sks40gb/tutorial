@@ -1,10 +1,11 @@
 package com.core.generic.custom;
 
-import java.util.Iterator;
+import org.junit.jupiter.api.Test;
 
 public class A3_Cloneable {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
         ConfusedPerson1 person1 = new ConfusedPerson1("John");
         //Wrong implementation of cloning
 //        ConfusedPerson1 clone1 = person1.clone();
@@ -15,11 +16,11 @@ public class A3_Cloneable {
 
 
 //---- This will allow to clone anything -------------
-interface Cloneable1<T>{
+interface Cloneable1<T> {
     T clone();
 }
 
-class ConfusedPerson1 implements Cloneable1<String>{
+class ConfusedPerson1 implements Cloneable1<String> {
     private String name;
     private int age;
 
@@ -35,11 +36,11 @@ class ConfusedPerson1 implements Cloneable1<String>{
 
 //--- This will ensure to clone in right way
 
-interface Cloneable2<T extends Cloneable2<T>>{
+interface Cloneable2<T extends Cloneable2<T>> {
     T clone();
 }
 
-class ConfusedPerson2 implements Cloneable2<ConfusedPerson2>{
+class ConfusedPerson2 implements Cloneable2<ConfusedPerson2> {
     private String name;
     private int age;
 

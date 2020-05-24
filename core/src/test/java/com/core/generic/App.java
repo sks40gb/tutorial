@@ -1,5 +1,7 @@
 package com.core.generic;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * Type safety and Type Casting.
  * Generic Class are template Class.
@@ -9,7 +11,8 @@ package com.core.generic;
  */
 public class App {
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         Math math = new Math();
         math.setName("Math");
         math.setDuration(1000);

@@ -1,11 +1,12 @@
 package com.core.timertask;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- *
  * @author sunil
  */
 class Task extends TimerTask {
@@ -21,7 +22,8 @@ class Task extends TimerTask {
 
 class TaskScheduling {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
         Timer timer = new Timer();
 
 

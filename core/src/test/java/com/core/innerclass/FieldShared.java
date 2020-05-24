@@ -1,12 +1,14 @@
 package com.core.innerclass;
 
+import org.junit.jupiter.api.Test;
+
 /**
- *
  * @author Sunil
  */
 public class FieldShared {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
         MyOuter myOuter = new MyOuter();
         //each time new instance of inner is created. While there is no change in parent class.
         myOuter.makeInner();

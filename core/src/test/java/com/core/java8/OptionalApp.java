@@ -1,5 +1,7 @@
 package com.core.java8;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Optional;
 
 /**
@@ -12,7 +14,8 @@ import java.util.Optional;
  */
 public class OptionalApp {
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         //Here is an Optional with null value
         Optional<String> optional = Optional.ofNullable(null);
 

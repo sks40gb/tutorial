@@ -4,13 +4,16 @@ package com.core.multithreading.concurrency;
  *
  * @author Sunil
  */
+import org.junit.jupiter.api.Test;
+
 import java.util.concurrent.Exchanger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ExchangerApp {
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         Exchanger<Country> exchanger = new Exchanger();
         // Starting two threads
         new Thread(new Producer(exchanger)).start();

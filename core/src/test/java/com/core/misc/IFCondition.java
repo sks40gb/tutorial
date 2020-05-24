@@ -1,12 +1,14 @@
 package com.core.misc;
 
+import org.junit.jupiter.api.Test;
+
 /**
- *
  * @author sunil
  */
 public class IFCondition {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
 
 
         if (getOne() ^ getTwo()) {

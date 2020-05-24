@@ -1,5 +1,7 @@
 package com.core.multithreading.program;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -11,12 +13,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Sunil
  */
 public class PrimeAndNonPrimerNumnber {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void main() throws InterruptedException {
         AtomicNumber number = new AtomicNumber();
         Lock lock = new ReentrantLock();
         Condition condition = lock.newCondition();
@@ -110,10 +112,10 @@ class PrintPrime implements Runnable {
     private void print() {
 
         if (number.isPrimeNumber()) {
-            System.err.println("Prime Number  : " + number.getNumber() + " by " + Thread.currentThread().getName()); 
+            System.err.println("Prime Number  : " + number.getNumber() + " by " + Thread.currentThread().getName());
             number.inrement();
             condition.signalAll();
-           
+
 //                System.out.println(getClass() + " SINGAL");
         } else {
             try {

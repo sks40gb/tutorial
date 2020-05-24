@@ -1,11 +1,8 @@
 package com.core.multithreading.concurrency;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import org.junit.jupiter.api.Test;
+
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -66,7 +63,8 @@ public class SemaphoreApp {
 
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
 
         System.out.println("Total available Semaphore permits : "
                 + semaphore.availablePermits());

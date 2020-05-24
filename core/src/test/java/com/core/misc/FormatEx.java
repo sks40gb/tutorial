@@ -1,25 +1,18 @@
 package com.core.misc;
 
-import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
 /**
- *
  * @author Sunil
- *
- *    %[arg_index$][flags][width][.precision] conversion char
- *
+ * <p>
+ * %[arg_index$][flags][width][.precision] conversion char
  */
 public class FormatEx {
-
-    public static void main(String[] args) {
-        format1();
-        format2();
-    }
-
     /**
      * For space
      */
-    public static void format1() {
+    @Test
+    public void format1() {
         System.out.println("FORMAT 1===============================");
         System.out.format(">%1$10d  %2$20d  <\n", 123, 2);
         System.out.format(">%1$10d  %2$20d  <\n", 12234323, 2);
@@ -37,7 +30,8 @@ public class FormatEx {
      * -    - left justify
      * 33   - size
      */
-    public static void format2() {
+    @Test
+    public void format2() {
         System.out.println("FORMAT 2===============================");
         System.out.format("%2$-33d     %1$s", "SINGH", 400);
         System.out.println("");

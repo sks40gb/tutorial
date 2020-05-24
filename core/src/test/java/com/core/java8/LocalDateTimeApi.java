@@ -2,12 +2,23 @@ package com.core.java8;
 // Java code for LocalDate 
 // / LocalTime Function 
 
-import java.time.*;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
 public class LocalDateTimeApi {
 
-    public static void LocalDateTimeApi() {
+    // Driver code
+    @Test
+    public void main() {
+        LocalDateTimeApi();
+    }
+
+    public void LocalDateTimeApi() {
 
         // the current date 
         LocalDate date = LocalDate.now();
@@ -50,10 +61,5 @@ public class LocalDateTimeApi {
 
         System.out.println("specfic date with "
                 + "current time : " + specificDate);
-    }
-
-    // Driver code 
-    public static void main(String[] args) {
-        LocalDateTimeApi();
     }
 }

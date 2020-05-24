@@ -1,5 +1,7 @@
 package com.core.multithreading.concurrency;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,12 +12,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Sunil
  */
 public class ReentranctLockApp {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void main() throws InterruptedException {
         final Processor processor = new Processor();
         System.out.println("Main is starting.");
         Thread t1 = new Thread(new Runnable() {
@@ -77,7 +79,7 @@ public class ReentranctLockApp {
         System.out.println("Main is existing.");
     }
 
-   static class Processor {
+    static class Processor {
 
         private final static int MAX_SIZE = 10;
         private volatile List<Integer> list = new ArrayList(MAX_SIZE);

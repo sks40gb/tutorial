@@ -1,10 +1,13 @@
 package com.core.io;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.*;
 
 public class DataInputStreamApp {
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         String filename = "data-out.dat";
         String message = "Hi,Sunil";
 

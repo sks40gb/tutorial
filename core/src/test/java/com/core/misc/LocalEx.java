@@ -1,5 +1,7 @@
 package com.core.misc;
 
+import org.junit.jupiter.api.Test;
+
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.Date;
@@ -17,7 +19,8 @@ import java.util.Locale;
  */
 public class LocalEx {
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         Date date = new Date();
         Locale locale = new Locale("en");
         Locale localeIN = new Locale("en","in");

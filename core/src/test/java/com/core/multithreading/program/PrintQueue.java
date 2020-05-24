@@ -9,6 +9,8 @@
  */
 package com.core.multithreading.program;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.LinkedList;
 
 /**
@@ -45,7 +47,8 @@ public class PrintQueue {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         final PrintQueue pq = new PrintQueue();
 
         Thread producer1 = new Thread() {

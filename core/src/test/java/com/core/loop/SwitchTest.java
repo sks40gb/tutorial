@@ -4,6 +4,8 @@
  */
 package com.core.loop;
 
+import org.junit.jupiter.api.Test;
+
 /**
  *
  * @author Sunil
@@ -41,7 +43,8 @@ public class SwitchTest {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         execute(Day.TUESDAY);
         execute(Day.FRIDAY);
     }

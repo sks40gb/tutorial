@@ -1,15 +1,17 @@
 package com.core.collection;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Comparator;
 import java.util.Map;
 
 /**
- *
  * @author sunil
  */
 public class MapSorting {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
     }
 }
 

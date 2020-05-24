@@ -1,5 +1,7 @@
 package com.core.misc;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Scanner;
 
 /**
@@ -8,12 +10,7 @@ import java.util.Scanner;
  */
 public class MiscTest {
 
-    public static void main(String[] args) {
-        readFromConsole();
-
-    }
-
-    public static void readFromConsole() {
+    public void readFromConsole() {
         Scanner scanner = new Scanner(System.in);
         if(scanner.hasNext()){
             System.out.println("THis is what you type : " + scanner.next());

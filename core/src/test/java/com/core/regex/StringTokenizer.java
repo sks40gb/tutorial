@@ -5,22 +5,24 @@
 
 package com.core.regex;
 
+import org.junit.jupiter.api.Test;
+
 /**
- *
  * @author sunil
  */
 public class StringTokenizer {
-    public static void main(String[] args) {
+
+    @Test
+    public void main() {
         String str = "sunil|kumar|singh";
         String deli = "\\|";
-        
-        String tokens[]  = str.split(deli);
-        
-        for(String token : tokens)
-        {
+
+        String tokens[] = str.split(deli);
+
+        for (String token : tokens) {
             System.out.println("==========> " + token);
         }
-        
-    }   
-    
+
+    }
+
 }

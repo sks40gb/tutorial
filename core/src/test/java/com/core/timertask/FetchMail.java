@@ -4,11 +4,8 @@ package com.core.timertask;
  *
  * @author sunil
  */
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Date;
+
+import java.util.*;
 
 public final class FetchMail extends TimerTask {
 

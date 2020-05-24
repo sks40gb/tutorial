@@ -2,6 +2,7 @@ package com.core.generic.custom;
 
 import com.core.generic.Physics;
 import com.core.generic.Subject;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -52,7 +53,8 @@ public class A1_AllPossibleCases<A,B extends Subject> {
         return e;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         A1_AllPossibleCases<String, Subject> s = new A1_AllPossibleCases<>();
 
         A1_AllPossibleCases<String, ? super Subject> s2 = new A1_AllPossibleCases<>();

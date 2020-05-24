@@ -1,16 +1,18 @@
 package com.core.reflaction;
 
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- *
  * @author sunil
  */
 public class Reflaction {
 
-    public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+    @Test
+    public void main() throws Exception {
 
         User user = new User(111, "0k", true);
         Class userClass = user.getClass();

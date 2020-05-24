@@ -1,8 +1,9 @@
 package com.core.io;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.SequenceInputStream;
 
 /**
@@ -11,7 +12,8 @@ import java.io.SequenceInputStream;
  */
 public class SequenceInputStreamApp {
 
-    public static void main(String args[]) throws IOException {
+    @Test
+    public void main() throws  Exception{
         FileInputStream fileInputStream1 = new FileInputStream("Sayings.txt");  // first source file
         FileInputStream fileInputStream2 = new FileInputStream("Morals.txt");  //second source file
 

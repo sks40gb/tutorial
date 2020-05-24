@@ -1,10 +1,16 @@
 package com.core.io;
 
-import java.io.*;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class FileCopyUserBuffer {  // Pre-JDK 7
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         String inFileStr = "test-in.jpg";
         String outFileStr = "test-out.jpg";
         FileInputStream in = null;

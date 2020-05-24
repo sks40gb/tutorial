@@ -1,5 +1,7 @@
 package com.core.multithreading.concurrency;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,12 +12,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Sunil
  */
 public class ReentrantLockApp {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void main() throws InterruptedException {
         final Processor_ processor = new Processor_();
         System.out.println("Main is starting.");
         Thread t1 = new Thread(new Runnable() {

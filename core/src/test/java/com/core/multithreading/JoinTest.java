@@ -1,12 +1,15 @@
 package com.core.multithreading;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JoinTest {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main() throws InterruptedException {
 
         Thread number = new Thread(() -> {
             int[] numbers = {1, 2, 3, 4};

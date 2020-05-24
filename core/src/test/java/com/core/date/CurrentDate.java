@@ -1,5 +1,7 @@
 package com.core.date;
 
+import org.junit.jupiter.api.Test;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -12,7 +14,8 @@ import java.util.GregorianCalendar;
  */
 public class CurrentDate {
     
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         Timestamp dTime = new Timestamp(new Date().getTime());
         
         //2008-07-18 11:53:36.258

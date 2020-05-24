@@ -1,7 +1,6 @@
 package com.core.innerclass;
 
 /**
- *
  * @author sunil
  * This code snippet kind of answers your question already. The class Role is used by the employee interface in
  * getRole() method. The designer of the interface decided that this class is so tightly coupled with the interface
@@ -14,11 +13,11 @@ public interface ClassInsideInterface {
         public String rollname;
         public int roleId;
         public Object person;
-        
-        public void print(){
+
+        public void print() {
             System.out.println("Print the role here.");
         }
-    } 
+    }
 
     Role getRole();
     // other methods
@@ -26,7 +25,8 @@ public interface ClassInsideInterface {
 
 class Test implements ClassInsideInterface {
 
-    public static void main(String[] args) {
+    @org.junit.jupiter.api.Test
+    public void main() {
         Test s = new Test();
         Role role = s.getRole();
         role.print();

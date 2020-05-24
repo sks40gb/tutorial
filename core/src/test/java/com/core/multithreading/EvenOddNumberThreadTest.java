@@ -1,12 +1,13 @@
 package com.core.multithreading;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Sunil
  */
 public class EvenOddNumberThreadTest {
@@ -23,17 +24,19 @@ public class EvenOddNumberThreadTest {
 }
 
 
-class NumberThread extends Thread{
+class NumberThread extends Thread {
     List<Integer> count;
-    public NumberThread(String threadName, List<Integer> count){
+
+    public NumberThread(String threadName, List<Integer> count) {
         this.count = count;
         setName(threadName);
     }
-    public void run(){
-        while(true){
-            synchronized(count){
-                count.add(count.size()+1);
-                System.out.println("Thread "  + getName() + " : " + count.size());
+
+    public void run() {
+        while (true) {
+            synchronized (count) {
+                count.add(count.size() + 1);
+                System.out.println("Thread " + getName() + " : " + count.size());
                 count.notifyAll();
                 try {
                     count.wait();

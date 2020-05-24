@@ -1,6 +1,6 @@
 package com.core.annotation.ex;
 
-import java.awt.event.*;
+import java.awt.event.ActionListener;
 import java.lang.reflect.*;
 
 public class ActionListenerInstaller {

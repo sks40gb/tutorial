@@ -1,5 +1,7 @@
 package com.core.io;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,7 +15,8 @@ public class FileApp {
 
     File file = new File("/home/sunil/Desktop/sunil.txt");
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         new FileApp().fileOperation();
     }
     

@@ -1,5 +1,7 @@
 package com.core.multithreading.concurrency;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,12 +9,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Sunil
  */
 public class WaitNotifyApp {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void main() throws InterruptedException {
         final Processor processor = new Processor();
         System.out.println("Main is starting.");
         Thread t1 = new Thread(new Runnable() {
@@ -28,8 +30,8 @@ public class WaitNotifyApp {
         });
 
         //Inner thread class
-        class Consumer implements Runnable{
-              @Override
+        class Consumer implements Runnable {
+            @Override
             public void run() {
                 try {
                     processor.consume();
@@ -38,11 +40,11 @@ public class WaitNotifyApp {
                 }
             }
         }
-        
+
         Thread t2 = new Thread(new Consumer());
         Thread t3 = new Thread(new Consumer());
         Thread t4 = new Thread(new Consumer());
-        
+
         t1.start();
         t2.start();
         t3.start();
@@ -83,7 +85,7 @@ class Processor {
             synchronized (this) {
                 if (list.isEmpty()) {
                     wait();
-                }  
+                }
                 //check again if Thread gets resumed and meanwhile list is empty by other consumer thread.
                 if (!list.isEmpty()) {
                     System.out.println("REMOVING BY " + Thread.currentThread().getName() + " --- " + +list.get(0));

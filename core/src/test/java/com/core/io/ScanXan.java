@@ -1,10 +1,17 @@
 package com.core.io;
 
-import java.io.*;
+import org.junit.jupiter.api.Test;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ScanXan {
-    public static void main(String[] args) throws IOException {
+
+    @Test
+    public void main() throws IOException {
 
         Scanner s = null;
 

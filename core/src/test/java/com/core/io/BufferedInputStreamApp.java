@@ -1,10 +1,13 @@
 package com.core.io;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.*;
 
 public class BufferedInputStreamApp {  // Pre-JDK 7
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
         String inFileStr = "test-in.jpg";
         String outFileStr = "test-out.jpg";
         BufferedInputStream in = null;

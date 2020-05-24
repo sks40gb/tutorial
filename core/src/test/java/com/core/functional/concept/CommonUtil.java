@@ -1,7 +1,10 @@
 package com.core.functional.concept;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 public interface CommonUtil {
 

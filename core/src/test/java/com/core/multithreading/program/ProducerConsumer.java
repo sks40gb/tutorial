@@ -1,19 +1,21 @@
 package com.core.multithreading.program;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Sunil
  */
 public class ProducerConsumer {
 
     public static int count;
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
         List<Integer> list = new ArrayList<>();
         Thread t1 = new Thread(new Producer(list));
         t1.setName("You and Me");

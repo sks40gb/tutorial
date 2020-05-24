@@ -1,11 +1,13 @@
 package com.core.collection;
 
-import java.util.Comparator;
+import org.junit.jupiter.api.Test;
+
 import java.util.PriorityQueue;
 
 public class PriorityQueSample {
     
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
                 
         PriorityQueue<String> pq = new PriorityQueue<String>();
         pq.add("SUNDAY");

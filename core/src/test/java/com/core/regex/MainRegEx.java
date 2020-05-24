@@ -1,15 +1,17 @@
 package com.core.regex;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
  * @author sunil
  */
 public class MainRegEx {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
         greedy();
         reluctant();
         possessive();

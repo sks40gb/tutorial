@@ -1,5 +1,7 @@
 package com.core.multithreading;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,8 @@ public class ProducerConsumerExample {
         jobList = new ArrayList<>();
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void main()  {
         new ProducerConsumerExample().start();
     }
 

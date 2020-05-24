@@ -1,26 +1,23 @@
 package com.core.serializable;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import org.junit.jupiter.api.Test;
+
+import java.io.*;
 
 /**
- *  1. Non Serialize parent constructor will always be executed
- *  2. Serialized class's constructor will never be executed while deserializing.
- *  3. private void writeObject(ObjectOutputStream os) and private void readObject(ObjectInputStream is) is for manual
- *     serializable
- *  4. os.defaultWriteObject() and is.defaultReadObject() are for default Serializable. If this methods are omitted every
- *     instance value had be maintained manually.
+ * 1. Non Serialize parent constructor will always be executed
+ * 2. Serialized class's constructor will never be executed while deserializing.
+ * 3. private void writeObject(ObjectOutputStream os) and private void readObject(ObjectInputStream is) is for manual
+ * serializable
+ * 4. os.defaultWriteObject() and is.defaultReadObject() are for default Serializable. If this methods are omitted every
+ * instance value had be maintained manually.
  *
  * @author Sunil
  */
 public class SerializableApp2 {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
 
         write();
         read();
@@ -56,12 +53,12 @@ public class SerializableApp2 {
     }
 }
 
-class Animal implements Serializable{
+class Animal implements Serializable {
 
     protected int age = 5;
 
     public Animal() {  // Construtor will always execute since it not Serializable
-        System.out.println("Aminal constuctor");   
+        System.out.println("Aminal constuctor");
         age = 10;
     }
 }
@@ -79,14 +76,15 @@ class Dog extends Animal implements Serializable {
     }
 
     public void print() {
-        System.out.println("Name : " + name + " Age : " + age + " color :" +  color);
+        System.out.println("Name : " + name + " Age : " + age + " color :" + color);
     }
 
     /**
      * Manual Serialized
+     *
      * @param os
      */
-    private void writeObject(ObjectOutputStream os){
+    private void writeObject(ObjectOutputStream os) {
         try {
             System.out.println("writeObject Method is called.");
             os.defaultWriteObject();  // default serialization should be performed
@@ -99,15 +97,16 @@ class Dog extends Animal implements Serializable {
 
     /**
      * Manual Deserialized
+     *
      * @param is
      */
-    private void readObject(ObjectInputStream is){
+    private void readObject(ObjectInputStream is) {
         try {
             System.out.println("readObject Method is called.");
             is.defaultReadObject();   //default deserilizable should be performed.
             color = String.valueOf(is.readObject());  //java.io.OptionalDataException if "color" is not saved.
             name = String.valueOf(is.readObject());
-          
+
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {

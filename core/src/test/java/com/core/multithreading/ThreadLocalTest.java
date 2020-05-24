@@ -1,7 +1,8 @@
 package com.core.multithreading;
 
+import org.junit.jupiter.api.Test;
+
 /**
- *
  * @author Sunil
  */
 public class ThreadLocalTest {
@@ -13,7 +14,8 @@ public class ThreadLocalTest {
         }
     };
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void main() throws InterruptedException {
         Printer printer = ThreadLocalTest::printNumber;
         new Thread(() -> printer.print()).start();
         new Thread(() -> printer.print()).start();
