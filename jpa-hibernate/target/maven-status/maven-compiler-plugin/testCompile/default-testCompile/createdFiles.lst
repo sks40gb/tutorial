@@ -1,0 +1,8 @@
+com/sun/jpa/hibernate/repository/CourseRepositoryTest.class
+com/sun/jpa/hibernate/repository/CourseSpringDataRepositoryTest.class
+com/sun/jpa/hibernate/repository/PerformanceTuningTest.class
+com/sun/jpa/hibernate/DemoApplicationTests.class
+com/sun/jpa/hibernate/repository/NativeQueriesTest.class
+com/sun/jpa/hibernate/repository/JPQLTest.class
+com/sun/jpa/hibernate/repository/StudentRepositoryTest.class
+com/sun/jpa/hibernate/repository/CriteriaQueryTest.class

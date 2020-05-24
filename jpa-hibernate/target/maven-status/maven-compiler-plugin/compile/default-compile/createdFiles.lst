@@ -1,0 +1,14 @@
+com/sun/jpa/hibernate/repository/CourseRepository.class
+com/sun/jpa/hibernate/repository/EmployeeRepository.class
+com/sun/jpa/hibernate/entity/PartTimeEmployee.class
+com/sun/jpa/hibernate/repository/StudentRepository.class
+com/sun/jpa/hibernate/repository/CourseSpringDataRepository.class
+com/sun/jpa/hibernate/entity/Course.class
+com/sun/jpa/hibernate/entity/Review.class
+com/sun/jpa/hibernate/entity/Address.class
+com/sun/jpa/hibernate/entity/ReviewRating.class
+com/sun/jpa/hibernate/entity/Student.class
+com/sun/jpa/hibernate/DemoApplication.class
+com/sun/jpa/hibernate/entity/FullTimeEmployee.class
+com/sun/jpa/hibernate/entity/Passport.class
+com/sun/jpa/hibernate/entity/Employee.class

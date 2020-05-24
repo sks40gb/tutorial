@@ -216,8 +216,6 @@ Master JPA using Hibernate as the implementation. Learn the basics of JPA - enti
 ```java
 package com.in28minutes.jpa.hibernate.demo;
 
-import java.math.BigDecimal;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -225,11 +223,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.in28minutes.jpa.hibernate.demo.entity.FullTimeEmployee;
-import com.in28minutes.jpa.hibernate.demo.entity.PartTimeEmployee;
-import com.in28minutes.jpa.hibernate.demo.repository.CourseRepository;
-import com.in28minutes.jpa.hibernate.demo.repository.EmployeeRepository;
-import com.in28minutes.jpa.hibernate.demo.repository.StudentRepository;
+import CourseRepository;
+import EmployeeRepository;
+import StudentRepository;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -327,7 +323,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PreRemove;
 
-import org.hibernate.annotations.CreationTimestamp;
+import com.sun.jpa.hibernate.entity.Review;import com.sun.jpa.hibernate.entity.Student;import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
@@ -481,7 +477,7 @@ public abstract class Employee {
 ```java
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import java.math.BigDecimal;
+import com.sun.jpa.hibernate.entity.Employee;import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 
@@ -506,7 +502,7 @@ public class FullTimeEmployee extends Employee {
 ```java
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import java.math.BigDecimal;
+import com.sun.jpa.hibernate.entity.Employee;import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 
@@ -532,7 +528,7 @@ public class PartTimeEmployee extends Employee {
 ```java
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import javax.persistence.Column;
+import com.sun.jpa.hibernate.entity.Student;import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -592,7 +588,7 @@ public class Passport {
 ```java
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import javax.persistence.Entity;
+import com.sun.jpa.hibernate.entity.Course;import com.sun.jpa.hibernate.entity.ReviewRating;import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -675,7 +671,7 @@ public enum ReviewRating {
 ```java
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import java.util.ArrayList;
+import com.sun.jpa.hibernate.entity.Address;import com.sun.jpa.hibernate.entity.Course;import com.sun.jpa.hibernate.entity.Passport;import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -775,9 +771,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
-import com.in28minutes.jpa.hibernate.demo.entity.Review;
-import com.in28minutes.jpa.hibernate.demo.entity.ReviewRating;
+import Course;
+import Review;
+import ReviewRating;
 
 @Repository
 @Transactional
@@ -867,7 +863,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import Course;
 
 @RepositoryRestResource(path="courses")
 public interface CourseSpringDataRepository extends JpaRepository<Course, Long> {
@@ -908,9 +904,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.in28minutes.jpa.hibernate.demo.entity.Employee;
-import com.in28minutes.jpa.hibernate.demo.entity.FullTimeEmployee;
-import com.in28minutes.jpa.hibernate.demo.entity.PartTimeEmployee;
+import Employee;
+import FullTimeEmployee;
+import PartTimeEmployee;
 
 @Repository
 @Transactional
@@ -950,9 +946,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
-import com.in28minutes.jpa.hibernate.demo.entity.Passport;
-import com.in28minutes.jpa.hibernate.demo.entity.Student;
+import Course;
+import Passport;
+import Student;
 
 @Repository
 @Transactional
@@ -1152,7 +1148,7 @@ import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.Subgraph;
 
-import org.junit.Test;
+import com.sun.jpa.hibernate.repository.CourseRepository;import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -1162,10 +1158,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
-import com.in28minutes.jpa.hibernate.demo.entity.Review;
-import com.in28minutes.jpa.hibernate.demo.entity.Student;
+import DemoApplication;
+import Course;
+import Review;
+import Student;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
@@ -1290,7 +1286,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
 
-import org.junit.Test;
+import com.sun.jpa.hibernate.repository.CourseSpringDataRepository;import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -1302,8 +1298,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import DemoApplication;
+import Course;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
@@ -1393,8 +1389,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import DemoApplication;
+import Course;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
@@ -1562,9 +1558,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
-import com.in28minutes.jpa.hibernate.demo.entity.Student;
+import DemoApplication;
+import Course;
+import Student;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
@@ -1692,7 +1688,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -1703,8 +1698,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import DemoApplication;
+import Course;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
@@ -1775,8 +1770,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import DemoApplication;
+import Course;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
@@ -1837,7 +1832,7 @@ package com.in28minutes.jpa.hibernate.demo.repository;
 
 import javax.persistence.EntityManager;
 
-import org.junit.Test;
+import com.sun.jpa.hibernate.repository.StudentRepository;import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -1846,10 +1841,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entity.Address;
-import com.in28minutes.jpa.hibernate.demo.entity.Passport;
-import com.in28minutes.jpa.hibernate.demo.entity.Student;
+import DemoApplication;
+import Address;
+import Passport;
+import Student;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
