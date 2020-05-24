@@ -2,7 +2,7 @@ package com.core.functional.concept;
 
 import java.util.Objects;
 
-public class User{
+public class User implements Comparable<User>{
     private int id;
     private String name;
     private Role role;
@@ -57,6 +57,11 @@ public class User{
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return o.getName().compareTo(getName());
     }
 
     enum Role{
