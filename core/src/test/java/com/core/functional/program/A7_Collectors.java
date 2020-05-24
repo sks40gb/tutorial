@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * @author sunsingh
  */
-public class A7_Examples {
+public class A7_Collectors {
 
     ArrayList<Employee> list;
 

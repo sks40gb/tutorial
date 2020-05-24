@@ -7,27 +7,52 @@ import com.data.company.Employee;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.lang.System.out;
+import static java.lang.System.setOut;
 
 public class A6_FlatMap {
 
     @Test
-    public void flatMap() {
+    public void findAddressIfStreetMatched() {
+        String street = "Alan Street 1";
         List<Company> companies = constuctData();
-        //find by street and return Employee
-        companies.stream()
-                 .flatMap(company -> company.getEmployeeList().stream())
-                 .flatMap(employee -> {
-                     Map<Employee, List<Address>> map = new HashMap<>();
-                     map.put(employee, employee.getAddressList());
-                     map.values().stream();
-                     return employee.getAddressList().stream();
-                 })
-                 .forEach(out::println);
+        Address foundAddress = companies.stream()
+                                        .flatMap(company -> company.getEmployeeList().stream())
+                                        .flatMap(employee -> employee.getAddressList().stream())
+                                        .filter(address -> address.getStreet().equals(street))
+                                        .findFirst()
+                                        .orElse(null);
+        out.println("Address found " + foundAddress);
+    }
+
+
+    @Test
+    public void findEmployeeIfStreetMatched() {
+        String street = "Alan Street 1";
+        List<Company> companies = constuctData();
+
+        Employee foundEmployee = companies
+                .stream()
+                .flatMap(company -> company.getEmployeeList().stream())
+                .map(employee -> {
+                    return employee.getAddressList()
+                                   .stream()
+                                   .collect(Collectors.toMap(adr -> adr, adr -> employee));
+                })
+                .filter(addressMap -> addressMap.keySet()
+                                                .stream()
+                                                .anyMatch(address -> address.getStreet()
+                                                                            .equals(street)))
+                .map(m -> m.entrySet())
+                .flatMap(m -> m.stream())
+                .map(entry -> entry.getValue())
+                .findFirst().get();
+
+        out.println("Found employee " + foundEmployee);
     }
 
     public static List<Company> constuctData() {

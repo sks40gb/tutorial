@@ -1,8 +1,5 @@
 package com.core.multithreading;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
