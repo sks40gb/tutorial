@@ -1,4 +1,4 @@
-package com.mkyong.examples;
+package com.sun.unit;
 
 public class MessageBuilder {
 
