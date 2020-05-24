@@ -21,6 +21,7 @@
         <module>designpattern</module>
         <module>spring</module>
         <module>jpa-hibernate</module>
+        <module>maven-unit-test</module>
     </modules>
 
     <dependencies>
