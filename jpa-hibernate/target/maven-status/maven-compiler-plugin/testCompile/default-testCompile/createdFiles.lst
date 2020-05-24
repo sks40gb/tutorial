@@ -1,0 +1,8 @@
+com/in28minutes/jpa/hibernate/demo/repository/CourseRepositoryTest.class
+com/in28minutes/jpa/hibernate/demo/repository/NativeQueriesTest.class
+com/in28minutes/jpa/hibernate/demo/repository/CriteriaQueryTest.class
+com/in28minutes/jpa/hibernate/demo/repository/JPQLTest.class
+com/in28minutes/jpa/hibernate/demo/repository/StudentRepositoryTest.class
+com/in28minutes/jpa/hibernate/demo/repository/CourseSpringDataRepositoryTest.class
+com/in28minutes/jpa/hibernate/demo/DemoApplicationTests.class
+com/in28minutes/jpa/hibernate/demo/repository/PerformanceTuningTest.class
