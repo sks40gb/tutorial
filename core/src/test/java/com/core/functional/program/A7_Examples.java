@@ -1,4 +1,4 @@
-package com.core.functional.concept;
+package com.core.functional.program;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

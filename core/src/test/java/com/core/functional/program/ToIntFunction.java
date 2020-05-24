@@ -1,4 +1,4 @@
-package com.core.functional.concept;
+package com.core.functional.program;
 
 @FunctionalInterface
 public interface ToIntFunction<T> {
