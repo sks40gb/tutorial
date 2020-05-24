@@ -27,3 +27,11 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+
+# Target folders of projects
+core/target/
+datastructure/target/
+designpattern/target/
+jpa-hibernate/target/
+spring/target/
