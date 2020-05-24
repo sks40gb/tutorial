@@ -38,11 +38,9 @@ public class A6_FlatMap {
         Employee foundEmployee = companies
                 .stream()
                 .flatMap(company -> company.getEmployeeList().stream())
-                .map(employee -> {
-                    return employee.getAddressList()
-                                   .stream()
-                                   .collect(Collectors.toMap(adr -> adr, adr -> employee));
-                })
+                .map(employee -> employee.getAddressList()
+                                     .stream()
+                                     .collect(Collectors.toMap(adr -> adr, adr -> employee)))
                 .filter(addressMap -> addressMap.keySet()
                                                 .stream()
                                                 .anyMatch(address -> address.getStreet()
