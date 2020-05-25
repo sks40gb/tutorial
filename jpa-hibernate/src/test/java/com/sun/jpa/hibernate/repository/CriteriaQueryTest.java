@@ -3,6 +3,7 @@ package com.sun.jpa.hibernate.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -11,7 +12,8 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.sun.jpa.hibernate.entity.Student;
+import com.sun.jpa.hibernate.dto.CourseInfoDto;
+import com.sun.jpa.hibernate.entity.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -21,7 +23,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sun.jpa.hibernate.DemoApplication;
-import com.sun.jpa.hibernate.entity.Course;
+import org.springframework.transaction.annotation.Transactional;
 import org.terracotta.context.query.QueryBuilder;
 
 @RunWith(SpringRunner.class)
@@ -170,9 +172,26 @@ public class CriteriaQueryTest {
     }
 
     @Test
+    @Transactional
     public void projection(){
         CriteriaBuilder cb = em.getCriteriaBuilder();
-//        CriteriaQuery<Course> cq = cb .cr
+        //Define the Project class
+        CriteriaQuery<CourseInfoDto> cq = cb.createQuery(CourseInfoDto.class);
+        Root<Course> root = cq.from(Course.class);
+        Join<Course, Review> reviewJoin = root.join(Course_.reviews, JoinType.LEFT);
+
+        //Construct for the projection
+        cq.select(cb.construct(CourseInfoDto.class,
+                root.get(Course_.id),
+                root.get(Course_.name),
+                reviewJoin.get(Review_.description)));
+
+        Query query = em.createQuery(cq);
+        List<CourseInfoDto> resultList = query.getResultList();
+        resultList.stream().forEach(c->{
+           logger.info("courseInfo: {}", c);
+        });
+
     }
 
 }
