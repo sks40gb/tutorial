@@ -35,22 +35,16 @@ public class A6_FlatMap {
         String street = "Alan Street 1";
         List<Company> companies = constuctData();
 
-        Employee foundEmployee = companies
+        companies
                 .stream()
                 .flatMap(company -> company.getEmployeeList().stream())
                 .map(employee -> employee.getAddressList()
-                                     .stream()
-                                     .collect(Collectors.toMap(adr -> adr, adr -> employee)))
-                .filter(addressMap -> addressMap.keySet()
-                                                .stream()
-                                                .anyMatch(address -> address.getStreet()
-                                                                            .equals(street)))
-                .map(m -> m.entrySet())
-                .flatMap(m -> m.stream())
-                .map(entry -> entry.getValue())
-                .findFirst().get();
-
-        out.println("Found employee " + foundEmployee);
+                                         .stream()
+                                         .filter(address -> address.getStreet()
+                                                                   .equals(street))
+                                         .collect(Collectors.toMap(adr -> adr, adr -> employee)))
+                .peek(out::println)
+                .forEach(out::println);
     }
 
     public static List<Company> constuctData() {

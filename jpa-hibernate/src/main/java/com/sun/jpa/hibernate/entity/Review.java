@@ -1,5 +1,7 @@
 package com.sun.jpa.hibernate.entity;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
+@Data
 public class Review {
 
 	@Id
@@ -28,34 +31,6 @@ public class Review {
 	public Review(ReviewRating rating, String description) {
 		this.rating = rating;
 		this.description = description;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public ReviewRating getRating() {
-		return rating;
-	}
-
-	public void setRating(ReviewRating rating) {
-		this.rating = rating;
-	}
-
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	@Override

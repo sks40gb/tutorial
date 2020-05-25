@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PreRemove;
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -25,90 +26,66 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@NamedQueries(value = { 
-		@NamedQuery(name = "query_get_all_courses", 
-				query = "Select  c  From Course c"),		
-		@NamedQuery(name = "query_get_all_courses_join_fetch", 
-		query = "Select  c  From Course c JOIN FETCH c.students s"),		
-		@NamedQuery(name = "query_get_100_Step_courses", 
-		query = "Select  c  From Course c where name like '%100 Steps'") })
+@NamedQueries(value = {
+        @NamedQuery(name = "query_get_all_courses",
+                query = "Select  c  From Course c"),
+        @NamedQuery(name = "query_get_all_courses_join_fetch",
+                query = "Select  c  From Course c JOIN FETCH c.students s"),
+        @NamedQuery(name = "query_get_100_Step_courses",
+                query = "Select  c  From Course c where name like '%100 Steps'")})
 @Cacheable
-@SQLDelete(sql="update course set is_deleted=true where id=?")
-@Where(clause="is_deleted = false")
+@SQLDelete(sql = "update course set is_deleted=true where id=?")
+@Where(clause = "is_deleted = false")
+@Data
 public class Course {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(Course.class);
-	
-	@Id
-	@GeneratedValue
-	private Long id;
+    private static Logger LOGGER = LoggerFactory.getLogger(Course.class);
 
-	@Column(nullable = false)
-	private String name;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	@OneToMany(mappedBy="course")
-	private List<Review> reviews = new ArrayList<>();
-	
-	@ManyToMany(mappedBy="courses")
-	@JsonIgnore
-	private List<Student> students = new ArrayList<>();
-	
-	@UpdateTimestamp
-	private LocalDateTime lastUpdatedDate;
+    @Column(nullable = false)
+    private String name;
 
-	@CreationTimestamp
-	private LocalDateTime createdDate;
-	
-	private boolean isDeleted;
-	
-	@PreRemove
-	private void preRemove(){
-		LOGGER.info("Setting isDeleted to True");
-		this.isDeleted = true;
-	}
+    @OneToMany(mappedBy = "course")
+    private List<Review> reviews = new ArrayList<>();
 
-	protected Course() {
-	}
+    @ManyToMany(mappedBy = "courses")
+    @JsonIgnore
+    private List<Student> students = new ArrayList<>();
 
-	public Course(String name) {
-		this.name = name;
-	}
+    @UpdateTimestamp
+    private LocalDateTime lastUpdatedDate;
 
-	public String getName() {
-		return name;
-	}
+    @CreationTimestamp
+    private LocalDateTime createdDate;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private boolean isDeleted;
 
-	
-	public List<Review> getReviews() {
-		return reviews;
-	}
+    @PreRemove
+    private void preRemove() {
+        LOGGER.info("Setting isDeleted to True");
+        this.isDeleted = true;
+    }
 
-	public void addReview(Review review) {
-		this.reviews.add(review);
-	}
+    protected Course() {
+    }
 
-	public void removeReview(Review review) {
-		this.reviews.remove(review);
-	}
+    public Course(String name) {
+        this.name = name;
+    }
 
-	public List<Student> getStudents() {
-		return students;
-	}
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
 
-	public void addStudent(Student student) {
-		this.students.add(student);
-	}
+    public void addReview(Review review) {
+        this.reviews.add(review);
+    }
 
-	public Long getId() {
-		return id;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("Course[%s]", name);
-	}
+    @Override
+    public String toString() {
+        return String.format("Course[%s]", name);
+    }
 }
