@@ -194,4 +194,30 @@ public class CriteriaQueryTest {
 
     }
 
+    @Test
+    @Transactional
+    public void projectionAndPaginantion(){
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        //Define the Project class
+        CriteriaQuery<CourseInfoDto> cq = cb.createQuery(CourseInfoDto.class);
+        Root<Course> root = cq.from(Course.class);
+        Join<Course, Review> reviewJoin = root.join(Course_.reviews, JoinType.LEFT);
+
+        //Construct for the projection
+        cq.select(cb.construct(CourseInfoDto.class,
+                root.get(Course_.id),
+                root.get(Course_.name),
+                reviewJoin.get(Review_.description)
+        ));
+
+        //Pagination first result and max result
+        Query query = em.createQuery(cq).setFirstResult(2).setMaxResults(1); //<-- set max result
+        List<CourseInfoDto> resultList = query.getResultList();
+        logger.info("Total items retrieved {}", resultList.size());
+        resultList.stream().forEach(c->{
+            logger.info("courseInfo: {}", c);
+        });
+
+    }
+
 }
