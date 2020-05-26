@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class A1_BasicStream {
 
@@ -19,4 +20,18 @@ public class A1_BasicStream {
                 .limit(2)
                 .forEach(System.out::println);
     }
+
+    @Test
+    public void iterateOverObject() {
+
+        List<User> userList = CommonUtil.getUserList();
+
+        Stream<User> stream = userList.stream();
+        stream.distinct()
+              .sorted()
+              .filter(e -> e.getId() > 2)
+              .forEach(System.out::println);
+
+    }
+
 }

@@ -8,17 +8,15 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.lang.System.out;
-import static java.lang.System.setOut;
 
 public class A6_FlatMap {
 
     @Test
     public void findAddressIfStreetMatched() {
-        String street = "Alan Street 1";
+        String street = "David Street 2";
         List<Company> companies = constuctData();
         Address foundAddress = companies.stream()
                                         .flatMap(company -> company.getEmployeeList().stream())
@@ -35,7 +33,7 @@ public class A6_FlatMap {
         String street = "Alan Street 1";
         List<Company> companies = constuctData();
 
-        companies
+        Employee foundEmployee = companies
                 .stream()
                 .flatMap(company -> company.getEmployeeList().stream())
                 .map(employee -> employee.getAddressList()
@@ -43,8 +41,12 @@ public class A6_FlatMap {
                                          .filter(address -> address.getStreet()
                                                                    .equals(street))
                                          .collect(Collectors.toMap(adr -> adr, adr -> employee)))
-                .peek(out::println)
-                .forEach(out::println);
+                .flatMap(m->m.entrySet().stream())
+                .findFirst()
+                .get()
+                .getValue();
+        out.println("Found Employee : " + foundEmployee);
+
     }
 
     public static List<Company> constuctData() {
