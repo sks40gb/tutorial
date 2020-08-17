@@ -2,8 +2,9 @@ package com.core.functional.program;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class A3_WithComparatorSteam {
@@ -13,14 +14,14 @@ public class A3_WithComparatorSteam {
 
         List<User> userList = CommonUtil.getUserList();
 
-         Comparator<Integer> comparator = new Comparator<Integer>(){
-             @Override
-             public int compare(Integer o1, Integer o2) {
-                 return o1 - o2;
-             }
-         };
+        Comparator<Integer> comparator = new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        };
 
-        Comparator<Integer> comparator2 = (o1, o2) -> o1- o2;
+        Comparator<Integer> comparator2 = (o1, o2) -> o1 - o2;
 
         ToIntFunction<User> toIntFunction = new ToIntFunction<User>() {
             @Override
@@ -34,8 +35,8 @@ public class A3_WithComparatorSteam {
         ToIntFunction<User> toIntFunction3 = User::getId;
 
         Stream<User> stream = userList.stream();
-                stream.sorted(CommonUtil.comparingInt(toIntFunction3))
-               .forEach(System.out::println);
+        stream.sorted(CommonUtil.comparingInt(toIntFunction3))
+              .forEach(System.out::println);
 
     }
 }
