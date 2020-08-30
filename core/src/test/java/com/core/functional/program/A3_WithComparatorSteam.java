@@ -30,7 +30,7 @@ public class A3_WithComparatorSteam {
             }
         };
 
-        ToIntFunction<User> toIntFunction2 = (user) -> user.getId();
+        ToIntFunction<User> toIntFunction2 = User::getId;
 
         ToIntFunction<User> toIntFunction3 = User::getId;
 
