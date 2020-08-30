@@ -2,28 +2,22 @@ package com.core.io;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class FileCopyUserBuffer {  // Pre-JDK 7
 
     @Test
-    public void main()  {
+    public void main() throws IOException {
         String inFileStr = "test-in.jpg";
         String outFileStr = "test-out.jpg";
-        FileInputStream in = null;
-        FileOutputStream out = null;
         long startTime, elapsedTime;  // for speed benchmarking
 
         // Check file length
         File fileIn = new File(inFileStr);
         System.out.println("File size is " + fileIn.length() + " bytes");
 
-        try {
-            in = new FileInputStream(inFileStr);
-            out = new FileOutputStream(outFileStr);
+        try(FileInputStream in = new FileInputStream(inFileStr);
+            FileOutputStream out = new FileOutputStream(outFileStr)) {
             startTime = System.nanoTime();
             byte[] byteBuf = new byte[4096];    // 4K byte-buffer
             int numBytesRead;
@@ -32,19 +26,6 @@ public class FileCopyUserBuffer {  // Pre-JDK 7
             }
             elapsedTime = System.nanoTime() - startTime;
             System.out.println("Elapsed Time is " + (elapsedTime / 1000000.0) + " msec");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {  // always close the streams
-            try {
-                if (in != null) {
-                    in.close();
-                }
-                if (out != null) {
-                    out.close();
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
         }
     }
 }
