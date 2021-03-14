@@ -12,6 +12,7 @@
         <module>core</module>
         <module>designpattern</module>
         <module>datastructure</module>
+        <module>programs</module>
     </modules>
 
     <properties>
