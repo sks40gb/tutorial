@@ -1,4 +1,4 @@
-package stream.k_design_pattern_in_lambda.a_iterator_pattern;
+package stream.y_design_pattern_in_lambda.a_iterator_pattern;
 
 import java.util.stream.IntStream;
 

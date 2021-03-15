@@ -1,4 +1,4 @@
-package stream.l_examples.greater_good;
+package stream.z_examples.greater_good;
 
 import java.util.function.Predicate;
 

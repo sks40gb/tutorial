@@ -1,4 +1,4 @@
-package stream.k_design_pattern_in_lambda.c_delegating;
+package stream.y_design_pattern_in_lambda.c_delegating;
 
 import java.util.function.Function;
 

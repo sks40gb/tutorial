@@ -1,4 +1,4 @@
-package stream.l_examples.lazy_evaluations;
+package stream.z_examples.lazy_evaluations;
 
 import java.util.*;
 

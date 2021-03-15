@@ -1,4 +1,4 @@
-package stream.k_design_pattern_in_lambda.b_lightweight_strategy;
+package stream.y_design_pattern_in_lambda.b_lightweight_strategy;
 
 import java.util.*;
 import java.util.function.Predicate;
