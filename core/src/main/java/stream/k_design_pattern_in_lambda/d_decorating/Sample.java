@@ -1,4 +1,4 @@
-package stream.design_pattern_in_lambda.d_decorating;
+package stream.k_design_pattern_in_lambda.d_decorating;
 
 import java.util.*;
 import java.awt.Color;

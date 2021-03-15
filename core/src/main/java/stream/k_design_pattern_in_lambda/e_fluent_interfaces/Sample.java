@@ -1,6 +1,5 @@
-package stream.design_pattern_in_lambda.e_fluent_interfaces;
+package stream.k_design_pattern_in_lambda.e_fluent_interfaces;
 
-import java.util.*;
 import java.util.function.Consumer;
 
 //class Mailer {

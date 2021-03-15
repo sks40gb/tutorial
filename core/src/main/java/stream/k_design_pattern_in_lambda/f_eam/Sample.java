@@ -1,4 +1,4 @@
-package stream.design_pattern_in_lambda.f_eam;
+package stream.k_design_pattern_in_lambda.f_eam;
 
 import java.util.function.Consumer;
 
