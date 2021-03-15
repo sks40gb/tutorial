@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
+import static org.junit.Assert.*;
 
 public class StreamTest {
 
@@ -10,12 +13,17 @@ public class StreamTest {
         new Employee(3, "Mark Zuckerberg", 300000.0)
     };
 
+    private List<Employee> empList = Arrays.asList(arrayOfEmps);
 
     // Java Stream Creation
-
     @Test
     public void stream_creation(){
-        Stream.of(arrayOfEmps);
+        //1
+        Stream<Employee> employeeStream = Stream.of(arrayOfEmps);
+
+        //2
+        Stream.of(arrayOfEmps[0], arrayOfEmps[1], arrayOfEmps[2]);
+
     }
 
 }

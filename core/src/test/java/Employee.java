@@ -9,4 +9,9 @@ public class Employee {
     private String name;
     private double salary;
 
+    public double salaryIncrement(double increment) {
+        this.salary += increment;
+        return this.salary;
+    }
+
 }
