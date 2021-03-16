@@ -348,5 +348,23 @@ public class StreamCreationTest {
         assertEquals(longestNameByAlphabet.get('M').get().getName(), "Mark Zuckerberg");
     }
 
+    // Parallel Streams
+    @Test
+    public void whenParallelStream_thenPerformOperationsInParallel() {
+        Employee[] arrayOfEmps = {
+            new Employee(1, "Jeff Bezos", 100000.0),
+            new Employee(2, "Bill Gates", 200000.0),
+            new Employee(3, "Mark Zuckerberg", 300000.0)
+        };
+        List<Employee> empList = Arrays.asList(arrayOfEmps);
+
+        empList.stream().parallel().forEach(e -> e.salaryIncrement(10.0));
+
+        assertThat(empList, contains(
+            hasProperty("salary", equalTo(110000.0)),
+            hasProperty("salary", equalTo(220000.0)),
+            hasProperty("salary", equalTo(330000.0))
+        ));
+    }
 
 }
