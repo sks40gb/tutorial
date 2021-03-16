@@ -1,10 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -181,6 +178,15 @@ public class StreamCreationTest {
         assertEquals(employees.get(0).getName(), "Bill Gates");
         assertEquals(employees.get(1).getName(), "Jeff Bezos");
         assertEquals(employees.get(2).getName(), "Mark Zuckerberg");
+    }
+
+    // min
+    @Test
+    public void whenFindMin_thenGetMinElementFromStream() {
+        Employee firstEmp = empList.stream()
+            .min(Comparator.comparingInt(Employee::getId))
+            .orElseThrow(NoSuchElementException::new);
+        assertEquals(firstEmp.getId(), 1);
     }
 
 
