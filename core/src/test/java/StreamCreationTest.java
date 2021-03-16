@@ -171,4 +171,17 @@ public class StreamCreationTest {
         assertEquals(employee.getSalary(), new Double(200000));
     }
 
+    // sorted
+    @Test
+    public void whenSortStream_thenGetSortedStream() {
+        List<Employee> employees = empList.stream()
+            .sorted((e1,e2) -> e1.getName().compareTo(e2.getName()))
+            // OR Comparator.comparing(Employee::getName)
+            .collect(Collectors.toList());
+        assertEquals(employees.get(0).getName(), "Bill Gates");
+        assertEquals(employees.get(1).getName(), "Jeff Bezos");
+        assertEquals(employees.get(2).getName(), "Mark Zuckerberg");
+    }
+
+
 }
