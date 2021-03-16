@@ -119,5 +119,26 @@ public class StreamCreationTest {
              .collect(Collectors.toList());
         assertEquals(namesFlatStream.size(), namesNested.size() * 2);
     }
+    @Test
+    public void whenIncrementSalaryUsingPeek_thenApplyNewSalary() {
+        Employee[] arrayOfEmps = {
+            new Employee(1, "Jeff Bezos", 100000.0),
+            new Employee(2, "Bill Gates", 200000.0),
+            new Employee(3, "Mark Zuckerberg", 300000.0)
+        };
+
+        List<Employee> empList = Arrays.asList(arrayOfEmps);
+
+        empList.stream()
+            .peek(e -> e.salaryIncrement(10.0))
+            .peek(System.out::println)
+            .collect(Collectors.toList());
+
+        assertThat(empList, contains(
+            hasProperty("salary", equalTo(110000.0)),
+            hasProperty("salary", equalTo(220000.0)),
+            hasProperty("salary", equalTo(330000.0))
+        ));
+    }
 
 }
