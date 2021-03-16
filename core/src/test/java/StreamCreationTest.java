@@ -156,4 +156,19 @@ public class StreamCreationTest {
         assertEquals(collect, Arrays.asList(16, 32, 64, 128, 256));
     }
 
+    // Lazy Evaluation
+    @Test
+    public void whenFindFirst_thenGetFirstEmployeeInStream() {
+        Integer[] empIds = { 1, 2, 3};
+
+        Employee employee = Stream.of(empIds)
+            .map(this::findById)
+            .filter(e -> e != null)
+            .filter(e -> e.getSalary() > 100000)
+            .findFirst()
+            .orElse(null);
+
+        assertEquals(employee.getSalary(), new Double(200000));
+    }
+
 }
