@@ -210,4 +210,18 @@ public class StreamCreationTest {
         assertEquals(distinctList, Arrays.asList(2,5,3,4));
     }
 
+    // allMatch, anyMatch, and noneMatch
+    @Test
+    public void whenApplyMatch_thenReturnBoolean() {
+        List<Integer> intList = Arrays.asList(2, 4, 5, 6, 8);
+
+        boolean allEven = intList.stream().allMatch(i -> i % 2 == 0);
+        boolean oneEven = intList.stream().anyMatch(i -> i % 2 == 0);
+        boolean noneMultipleOfThree = intList.stream().noneMatch(i -> i % 3 == 0);
+
+        assertFalse(allEven);
+        assertTrue(oneEven);
+        assertFalse(noneMultipleOfThree);
+    }
+
 }
