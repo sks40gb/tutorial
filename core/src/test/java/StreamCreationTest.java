@@ -136,4 +136,24 @@ public class StreamCreationTest {
         ));
     }
 
+    // count
+    @Test
+    public void whenStreamCount_thenGetElementCount() {
+        long empCount = empList.stream()
+            .filter(e -> e.getSalary() > 100000)
+            .count();
+        assertEquals(empCount, 2L);
+    }
+
+    // short-circuiting operations
+    @Test
+    public void whenLimitInfiniteStream_thenGetFiniteElements() {
+        Stream<Integer> infiniteStream = Stream.iterate(2, i -> i * 2);
+        List<Integer> collect = infiniteStream
+            .skip(3)  //<--
+            .limit(5) //<--
+            .collect(Collectors.toList());
+        assertEquals(collect, Arrays.asList(16, 32, 64, 128, 256));
+    }
+
 }
