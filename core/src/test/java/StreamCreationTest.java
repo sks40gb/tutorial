@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -235,4 +236,117 @@ public class StreamCreationTest {
 
         assertEquals(avgSal, new Double(200000));
     }
+
+    // reduce
+    @Test
+    public void whenApplyReduceOnStream_thenGetValue() {
+        Double sumSal = empList.stream()
+            .map(Employee::getSalary)
+            .reduce(0.0, Double::sum);
+        assertEquals(sumSal, new Double(600000));
+    }
+
+    // Joining
+    @Test
+    public void whenCollectByJoining_thenGetJoinedString() {
+        String empNames = empList.stream()
+            .map(Employee::getName)
+            .collect(Collectors.joining(", "))
+            .toString();
+
+        assertEquals(empNames, "Jeff Bezos, Bill Gates, Mark Zuckerberg");
+    }
+
+    // toSet
+    @Test
+    public void whenCollectBySet_thenGetSet() {
+        Set<String> empNames = empList.stream()
+            .map(Employee::getName)
+            .collect(Collectors.toSet());
+
+        assertEquals(empNames.size(), 3);
+    }
+
+    // toCollection
+    @Test
+    public void whenToVectorCollection_thenGetVector() {
+        Vector<String> empNames = empList.stream()
+            .map(Employee::getName)
+            .collect(Collectors.toCollection(Vector::new));
+
+        assertEquals(empNames.size(), 3);
+    }
+
+    // summarizingDouble
+    @Test
+    public void whenApplySummarizing_thenGetBasicStats() {
+        DoubleSummaryStatistics stats = empList.stream()
+            .collect(Collectors.summarizingDouble(Employee::getSalary));
+        assertEquals(stats.getCount(), 3);
+        assertEquals(stats.getSum(), 600000.0, 0);
+        assertEquals(stats.getMin(), 100000.0, 0);
+        assertEquals(stats.getMax(), 300000.0, 0);
+        assertEquals(stats.getAverage(), 200000.0, 0);
+    }
+
+    // summaryStatistics
+    @Test
+    public void whenApplySummaryStatistics_thenGetBasicStats() {
+        DoubleSummaryStatistics stats = empList.stream()
+            .mapToDouble(Employee::getSalary)
+            .summaryStatistics();
+        assertEquals(stats.getCount(), 3);
+        assertEquals(stats.getSum(), 600000.0, 0);
+        assertEquals(stats.getMin(), 100000.0, 0);
+        assertEquals(stats.getMax(), 300000.0, 0);
+        assertEquals(stats.getAverage(), 200000.0, 0);
+    }
+
+    // groupingBy
+    @Test
+    public void whenStreamGroupingBy_thenGetMap() {
+        Map<Character, List<Employee>> groupByAlphabet = empList.stream().collect(
+            Collectors.groupingBy(e -> e.getName().charAt(0)));
+        assertEquals(groupByAlphabet.get('B').get(0).getName(), "Bill Gates");
+        assertEquals(groupByAlphabet.get('J').get(0).getName(), "Jeff Bezos");
+        assertEquals(groupByAlphabet.get('M').get(0).getName(), "Mark Zuckerberg");
+    }
+
+    // mapping
+    @Test
+    public void whenStreamMapping_thenGetMap() {
+        Map<Character, List<Integer>> idGroupedByAlphabet = empList.stream().collect(
+            Collectors.groupingBy(e -> e.getName().charAt(0),
+                Collectors.mapping(Employee::getId, Collectors.toList())));
+        assertEquals(idGroupedByAlphabet.get('B').get(0), Integer.valueOf(2));
+        assertEquals(idGroupedByAlphabet.get('J').get(0), Integer.valueOf(1));
+        assertEquals(idGroupedByAlphabet.get('M').get(0), Integer.valueOf(3));
+    }
+
+    // reducing A
+    @Test
+    public void whenStreamReducing_thenGetValue() {
+        Double percentage = 10.0;
+        Double salIncrOverhead = empList.stream()
+            .collect(Collectors.reducing(
+                0.0, e -> e.getSalary() * percentage / 100, (s1, s2) -> s1 + s2));
+        assertEquals(salIncrOverhead, 60000.0, 0);
+    }
+
+    // reducing B
+    @Test
+    public void whenStreamGroupingAndReducing_thenGetMap() {
+        Comparator<Employee> byNameLength = Comparator.comparing(Employee::getName);
+
+        Map<Character, Optional<Employee>> longestNameByAlphabet =
+            empList.stream().collect(
+                Collectors.groupingBy(e -> new Character(e.getName().charAt(0)),
+                    Collectors.reducing(BinaryOperator.maxBy(byNameLength))));
+
+        assertEquals(longestNameByAlphabet.get('B').get().getName(), "Bill Gates");
+        assertEquals(longestNameByAlphabet.get('J').get().getName(), "Jeff Bezos");
+        assertEquals(longestNameByAlphabet.get('M').get().getName(), "Mark Zuckerberg");
+    }
+
+
 }
