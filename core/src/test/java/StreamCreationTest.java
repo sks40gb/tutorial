@@ -114,7 +114,8 @@ public class StreamCreationTest {
             Arrays.asList("Mark", "Zuckerberg"));
 
         List<String> namesFlatStream =  namesNested.stream()
-             .flatMap(Collection::stream)
+             .flatMap(Collection::stream)  //OR
+             //.flatMap(names -> names.stream())
              .collect(Collectors.toList());
         assertEquals(namesFlatStream.size(), namesNested.size() * 2);
     }
