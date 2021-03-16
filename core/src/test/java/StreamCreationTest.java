@@ -27,12 +27,12 @@ public class StreamCreationTest {
             new Employee(3, "Mark Zuckerberg", 300000.0)
         };
 
-      this.empList = Arrays.asList(arrayOfEmps);
-      employeeRepository = mock(EmployeeRepository.class);
+        this.empList = Arrays.asList(arrayOfEmps);
+        employeeRepository = mock(EmployeeRepository.class);
 
     }
 
-    private Employee findById(Integer id){
+    private Employee findById(Integer id) {
         Employee employee = empList.stream().filter(e -> e.getId() == id).findFirst().orElse(null);
         when(employeeRepository.findById(id)).thenReturn(employee);
         return employeeRepository.findById(id);
@@ -69,8 +69,8 @@ public class StreamCreationTest {
     }
 
     @Test
-    public void whenIdMapToEmployee_thenGetMatchedEmployees(){
-        Integer ids[] = {1,3};
+    public void whenIdMapToEmployee_thenGetMatchedEmployees() {
+        Integer ids[] = {1, 3};
         List<Employee> employeeList = Stream.of(ids).map(id -> findById(id))
             .collect(Collectors.toList());
         assertEquals(2, employeeList.size());
@@ -87,7 +87,7 @@ public class StreamCreationTest {
     // filter
     @Test
     public void whenFilterEmployees_thenGetFilteredStream() {
-        Integer[] empIds = { 1, 2, 3};
+        Integer[] empIds = {1, 2, 3};
 
         List<Employee> employees = Stream.of(empIds)
             .map(this::findById)
@@ -113,24 +113,19 @@ public class StreamCreationTest {
             Arrays.asList("Bill", "Gates"),
             Arrays.asList("Mark", "Zuckerberg"));
 
-        List<String> namesFlatStream =  namesNested.stream()
-             .flatMap(Collection::stream)  //OR
-             //.flatMap(names -> names.stream())
-             .collect(Collectors.toList());
+        List<String> namesFlatStream = namesNested.stream()
+            .flatMap(Collection::stream)  //OR
+            //.flatMap(names -> names.stream())
+            .collect(Collectors.toList());
         assertEquals(namesFlatStream.size(), namesNested.size() * 2);
     }
+
+    // peek
     @Test
     public void whenIncrementSalaryUsingPeek_thenApplyNewSalary() {
-        Employee[] arrayOfEmps = {
-            new Employee(1, "Jeff Bezos", 100000.0),
-            new Employee(2, "Bill Gates", 200000.0),
-            new Employee(3, "Mark Zuckerberg", 300000.0)
-        };
-
-        List<Employee> empList = Arrays.asList(arrayOfEmps);
 
         empList.stream()
-            .peek(e -> e.salaryIncrement(10.0))
+            .peek(e->e.salaryIncrement(10d))
             .peek(System.out::println)
             .collect(Collectors.toList());
 
