@@ -367,4 +367,22 @@ public class StreamCreationTest {
         ));
     }
 
+    // Infinite Streams- generate
+    @Test
+    public void whenGenerateStream_thenGetInfiniteStream() {
+        Stream.generate(Math::random)
+            .limit(5)
+            .forEach(System.out::println);
+    }
+
+    // Infinite Streams- iterate
+    @Test
+    public void whenIterateStream_thenGetInfiniteStream() {
+        Stream<Integer> evenNumStream = Stream.iterate(2, i -> i * 2);
+        List<Integer> collect = evenNumStream
+            .limit(5)
+            .collect(Collectors.toList());
+        assertEquals(collect, Arrays.asList(2, 4, 8, 16, 32));
+    }
+
 }
