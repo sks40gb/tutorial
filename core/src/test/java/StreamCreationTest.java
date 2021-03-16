@@ -189,5 +189,15 @@ public class StreamCreationTest {
         assertEquals(firstEmp.getId(), 1);
     }
 
+    // max
+    @Test
+    public void whenFindMax_thenGetMaxElementFromStream() {
+        Employee maxSalEmp = empList.stream()
+            .max(Comparator.comparing(Employee::getSalary))
+            .orElseThrow(NoSuchElementException::new);
+
+        assertEquals(maxSalEmp.getSalary(), new Double(300000.0));
+    }
+
 
 }
