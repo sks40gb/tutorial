@@ -63,7 +63,7 @@ public class StreamCreationTest {
         Integer ids[] = {1,3};
         List<Employee> employeeList = Stream.of(ids).map(id -> employeeRepository.findById(id))
             .collect(Collectors.toList());
-        assertEquals(3, employeeList.size());
+        assertEquals(2, employeeList.size());
     }
 
     private EmployeeRepository findById(Employee employee){
