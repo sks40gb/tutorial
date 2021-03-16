@@ -199,5 +199,15 @@ public class StreamCreationTest {
         assertEquals(maxSalEmp.getSalary(), new Double(300000.0));
     }
 
+    // distinct
+    @Test
+    public void whenApplyDistinct_thenRemoveDuplicatesFromStream() {
+        List<Integer> intList = Arrays.asList(2, 5, 3, 2, 4, 3);
+        List<Integer> distinctList = intList.stream()
+            .distinct()
+            .collect(Collectors.toList());
+
+        assertEquals(distinctList, Arrays.asList(2,5,3,4));
+    }
 
 }
