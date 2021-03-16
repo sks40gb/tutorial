@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.hamcrest.Matchers.*;
@@ -224,4 +225,14 @@ public class StreamCreationTest {
         assertFalse(noneMultipleOfThree);
     }
 
+    // sum(), average(), range() etc
+    @Test
+    public void whenApplySumOnIntStream_thenGetSum() {
+        Double avgSal = empList.stream()
+            .mapToDouble(Employee::getSalary)
+            .average()
+            .orElseThrow(NoSuchElementException::new);
+
+        assertEquals(avgSal, new Double(200000));
+    }
 }
