@@ -9,10 +9,13 @@ import java.util.stream.Stream;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
+import static org.mockito.Mockito.*;
+
 public class StreamCreationTest {
 
 
     private List<Employee> empList;
+    private EmployeeRepository employeeRepository;
 
     @Before
     public void before() {
@@ -23,6 +26,7 @@ public class StreamCreationTest {
         };
 
       this.empList = Arrays.asList(arrayOfEmps);
+      employeeRepository = mock(EmployeeRepository.class);
 
     }
 
@@ -52,6 +56,19 @@ public class StreamCreationTest {
             hasProperty("salary", equalTo(220000.0)),
             hasProperty("salary", equalTo(330000.0))
         ));
+    }
+
+    @Test
+    public void whenIdMapToEmployee_thenGetMatchedEmployees(){
+        Integer ids[] = {1,3};
+        List<Employee> employeeList = Stream.of(ids).map(id -> employeeRepository.findById(id))
+            .collect(Collectors.toList());
+        assertEquals(3, employeeList.size());
+    }
+
+    private EmployeeRepository findById(Employee employee){
+        when(employeeRepository.findById(employee.getId())).thenReturn(employee);
+        return employeeRepository;
     }
 
 }
