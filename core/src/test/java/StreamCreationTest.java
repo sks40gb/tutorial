@@ -1,6 +1,10 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
@@ -17,6 +21,8 @@ public class StreamCreationTest {
 
     private List<Employee> empList;
     private EmployeeRepository employeeRepository;
+    private static String fileName = "src/test/resources/test.txt";
+
 
     @Before
     public void before() {
@@ -385,4 +391,34 @@ public class StreamCreationTest {
         assertEquals(collect, Arrays.asList(2, 4, 8, 16, 32));
     }
 
+    // File Operations
+    @Test
+    public void whenStreamToFile_thenGetFile() throws IOException {
+        String[] words = {
+            "hello",
+            "refer",
+            "world",
+            "level"
+        };
+
+        try (PrintWriter pw = new PrintWriter(
+            Files.newBufferedWriter(Paths.get(fileName)))) {
+            Stream.of(words).forEach(pw::println);
+        }
+    }
+
+    private List<String> getPalindrome(Stream<String> stream, int length) {
+        return stream.filter(s -> s.length() == length)
+            .filter(s -> s.compareToIgnoreCase(
+                new StringBuilder(s).reverse().toString()) == 0)
+            .collect(Collectors.toList());
+    }
+
+    @Test
+    public void whenFileToStream_thenGetStream() throws IOException {
+        whenStreamToFile_thenGetFile();
+
+        List<String> str = getPalindrome(Files.lines(Paths.get(fileName)), 5);
+        assertThat(str, contains("refer", "level"));
+    }
 }
