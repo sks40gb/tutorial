@@ -8,13 +8,12 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class StreamCreationTest {
 
