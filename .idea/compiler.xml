@@ -2,22 +2,23 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="core" />
         <module name="designpattern" />
         <module name="datastructure" />
+        <module name="core" />
         <module name="programs" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="core" target="15" />
-      <module name="datastructure" target="15" />
-      <module name="designpattern" target="15" />
-      <module name="programs" target="15" />
-      <module name="tutorial" target="8" />
+      <module name="core" target="13" />
+      <module name="datastructure" target="13" />
+      <module name="designpattern" target="13" />
+      <module name="programs" target="13" />
+      <module name="tutorial" target="13" />
       <module name="zunk" target="8" />
     </bytecodeTargetLevel>
   </component>
