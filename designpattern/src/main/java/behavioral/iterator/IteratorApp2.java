@@ -29,6 +29,7 @@ class SCollection implements Iterable<String> {
         list.add("D");
     }
 
+    // comments goes here
     @Override
     public Iterator<String> iterator() {
         return new Iterator<String>() {
@@ -51,4 +52,24 @@ class SCollection implements Iterable<String> {
             }
         };
     }
+
+    assertFalse(allEven);
+    assertTrue(oneEven);
+    assertFalse(noneMultipleOfThree);
+    
 }
+
+First version prints out:
+
+1
+2
+3
+4
+5
+0
+5
+4
+3
+2
+1
+0
