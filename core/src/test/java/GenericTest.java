@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import org.junit.Test;
 
 public class GenericTest {
@@ -7,7 +10,7 @@ public class GenericTest {
 
         Cat cat1 = new Cat();
 
-        Factor<Animal> factory = new Factor<>();
+        Factor<Cat> factory = new Factor<>();
 
         factory.setAnimal(cat1);
 
@@ -15,6 +18,20 @@ public class GenericTest {
 
         cat2.makeSound();
 
+        List<Integer> intList = new ArrayList<>();
+        List<Number> numberList = new ArrayList<>();
+
+
+        addNumbers(intList);
+        addNumbers(numberList);
+
+    }
+
+    public void addNumbers(List<? super Integer> list) {
+        for (int i = 1;  i <= 10; i++) {
+//           Number p = list.get(0);
+           list.add(i);
+        }
     }
 
     interface Animal{
@@ -27,7 +44,7 @@ public class GenericTest {
         }
     }
 
-    static class Factor<T extends Animal>{
+    static class Factor<T>{
 
         private T animal;
 
