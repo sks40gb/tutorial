@@ -14,11 +14,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="core" target="13" />
-      <module name="datastructure" target="13" />
-      <module name="designpattern" target="13" />
-      <module name="programs" target="13" />
-      <module name="tutorial" target="13" />
+      <module name="core" target="1.8" />
+      <module name="datastructure" target="1.8" />
+      <module name="designpattern" target="1.8" />
+      <module name="programs" target="1.8" />
+      <module name="tutorial" target="1.8" />
       <module name="zunk" target="8" />
     </bytecodeTargetLevel>
   </component>

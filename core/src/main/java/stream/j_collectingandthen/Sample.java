@@ -5,7 +5,7 @@ import static java.util.stream.Collectors.*;
 
 public class Sample {  
   public static List<Person> createPeople() {
-    return List.of(
+    return Arrays.asList(
 	    new Person("Sara", 20),
 	    new Person("Sara", 22),
 	    new Person("Bob", 20),

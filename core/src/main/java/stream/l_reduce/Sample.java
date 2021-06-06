@@ -1,5 +1,6 @@
 package stream.l_reduce;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -12,7 +13,7 @@ public class Sample {
 
 
     public static void concate(){
-        List<String> items = List.of("A","B","C","D");
+        List<String> items = Arrays.asList("A", "B", "C", "D");
         String output = items.stream().reduce("",(result, item) -> result +"|" + item);
         System.out.println(output);
     }

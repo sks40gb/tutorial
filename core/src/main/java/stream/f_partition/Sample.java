@@ -7,7 +7,7 @@ public class Sample {
   public static void main(String[] args) {
     List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-    System.out.println(numbers.stream()
-      .collect(partitioningBy(e -> e % 2 == 0)));
+    Object o =  numbers.stream().collect(partitioningBy(x->x%2 == 0));
+    System.out.println(o);
   }
 }
