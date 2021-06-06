@@ -18,21 +18,10 @@ public class Sample {
     }
 
     public static void main(String[] args) {
-        example1();
-        example2();
-    }
-
-    private static void example1() {
         List<Person> people = createPeople();
         Map<String, List<Person>> byName = people.stream()
             .collect(groupingBy(Person::getName));
         System.out.println(byName);
     }
 
-    private static void example2() {
-        List<Person> people = createPeople();
-        Map<String, List<Integer>> nameAndAge = people.stream()
-            .collect(groupingBy(Person::getName, mapping(Person::getAge, toList())));
-        System.out.println(nameAndAge);
-    }
 }
