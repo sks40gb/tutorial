@@ -20,7 +20,11 @@ public class FindKthNode {
         Node slow = head;
         Node fast = head;
         for (int i = 0; i < k - 1; i++) {
-            fast = fast.next;
+            if(fast.next == null){
+                return null;
+            }else{
+                fast = fast.next;
+            }
         }
         while (fast.next != null) {
             fast = fast.next;
