@@ -8,6 +8,14 @@ public class LinkedList {
 
     public Node head;
 
+    public LinkedList(){
+
+    }
+
+    public LinkedList(Node head){
+        this.head = head;
+    }
+
     public void print() {
         Node temp = head;
         while (temp != null) {
