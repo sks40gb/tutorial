@@ -30,8 +30,10 @@ public class AddTwoNumbersStoredInReverse {
         Node result = null;
         Node resultHead = null;
         int carry = 0;
-        while (n1 != null && n2 != null) {
-            int sum = n1.data + n2.data + carry;
+        while (n1 != null || n2 != null) {
+            int firstNumber = n1 == null ? 0 : n1.data;
+            int secondNumber = n2 == null ? 0 : n2.data;
+            int sum = firstNumber + secondNumber + carry;
             if (sum >= 10) {
                 carry = 1;
                 sum = sum % 10;
@@ -45,45 +47,12 @@ public class AddTwoNumbersStoredInReverse {
                 result.next = new Node(sum);
                 result = result.next;
             }
-
-            n1 = n1.next;
-            n2 = n2.next;
-        }
-
-        while (n1 != null) {
-            int sum = n1.data + carry;
-            if (sum >= 10) {
-                sum = sum % 10;
-                carry = 1;
-            }else{
-                carry = 0;
+            if(n1 != null){
+                n1 = n1.next;
             }
-            if (result == null) {
-                result = new Node(sum);
-                resultHead = result;
-            } else {
-                result.next = new Node(sum);
-                result = result.next;
+            if(n2 != null){
+                n2 = n2.next;
             }
-            n1 = n1.next;
-        }
-
-        while (n2 != null) {
-            int sum = n2.data + carry;
-            if (sum >= 10) {
-                sum = sum % 10;
-                carry = 1;
-            }else{
-                carry = 0;
-            }
-            if (result == null) {
-                result = new Node(sum);
-                resultHead = result;
-            } else {
-                result.next = new Node(sum);
-                result = result.next;
-            }
-            n2 = n2.next;
         }
 
         if (carry > 0) {
