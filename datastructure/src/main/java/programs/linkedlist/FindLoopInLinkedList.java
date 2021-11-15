@@ -53,6 +53,7 @@ public class FindLoopInLinkedList {
         while(slow != fast){
             slow = slow.next;
             fast = fast.next;
+            //Is below code required
             if(fast == null){
                 return null;
             }
