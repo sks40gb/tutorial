@@ -23,7 +23,7 @@ public class MergeSorting {
         }
     }
 
-    public static void merge(int[] arr, int low, int middle, int high) {
+    private static void merge(int[] arr, int low, int middle, int high) {
         int[] result = new int[high - low + 1];
         
         //Copy the left and right minimum element first.
