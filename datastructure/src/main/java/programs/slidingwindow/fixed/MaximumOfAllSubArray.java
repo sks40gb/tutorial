@@ -1,4 +1,4 @@
-package programs.slidingwindow;
+package programs.slidingwindow.fixed;
 
 import java.util.ArrayList;
 import java.util.List;

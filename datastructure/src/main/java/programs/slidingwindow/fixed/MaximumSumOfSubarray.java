@@ -1,4 +1,4 @@
-package programs.slidingwindow;
+package programs.slidingwindow.fixed;
 
 /**
  * Find maximum (or minimum) sum of a subarray of size k
