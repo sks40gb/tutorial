@@ -10,7 +10,7 @@ public class TraversalWithoutRecursion {
 
     public static void main(String[] args) {
 
-        BinarySearchTree<Integer> tree = new BinarySearchTree();
+        BinarySearchTree tree = new BinarySearchTree();
         tree.insert(5);
         tree.insert(3);
         tree.insert(7);
@@ -26,8 +26,8 @@ public class TraversalWithoutRecursion {
 
     }
 
-    public static void preOrder(BinarySearchTree<Integer> tree) {
-        ArrayDeque<Node<Integer>> stack = new ArrayDeque<>();
+    public static void preOrder(BinarySearchTree tree) {
+        ArrayDeque<Node> stack = new ArrayDeque<>();
         stack.push(tree.root);
         while (!stack.isEmpty()) {
             Node node = stack.pop();
@@ -42,8 +42,8 @@ public class TraversalWithoutRecursion {
         }
     }
 
-    public static void postOrder(BinarySearchTree<Integer> tree) {
-        ArrayDeque<Node<Integer>> stack = new ArrayDeque<>();
+    public static void postOrder(BinarySearchTree tree) {
+        ArrayDeque<Node> stack = new ArrayDeque<>();
         stack.push(tree.root);
 
         while (!stack.isEmpty()) {

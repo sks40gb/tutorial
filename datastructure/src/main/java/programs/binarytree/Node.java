@@ -10,8 +10,8 @@ public class Node<T> {
         this.data = value;
     }
     T data;
-    Node left;
-    Node right;
+    public Node<T> left;
+    public Node<T> right;
 
     @Override
     public String toString() {

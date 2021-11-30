@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  *
  * @author sunsingh
  */
-public class BinarySearchTree<T extends Integer> {
+public class BinarySearchTree {
 
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
@@ -43,17 +43,17 @@ public class BinarySearchTree<T extends Integer> {
         System.out.println("Height of tree " + tree.height()); //4
     }
 
-    public Node<T> root;
+    public Node<Integer> root;
 
-    public void insert(T data) {
+    public void insert(Integer data) {
         this.root = insert(this.root, data);
     }
 
-    public Node search(T key) {
+    public Node search(Integer key) {
         return search(this.root, key);
     }
 
-    public Node<T> search(Node<T> node, T key) {
+    public Node<Integer> search(Node<Integer> node, Integer key) {
         if (node == null) {
             return null;
         } else if (node.data == key) {
@@ -66,9 +66,9 @@ public class BinarySearchTree<T extends Integer> {
         return null;
     }
 
-    public Node<T> insert(Node<T> node, T data) {
+    public Node<Integer> insert(Node<Integer> node, Integer data) {
         if (node == null) {
-            node = new Node<T>(data);
+            node = new Node<Integer>(data);
             return node;
         }
         if (data < node.data) {
@@ -85,7 +85,7 @@ public class BinarySearchTree<T extends Integer> {
         this.inorder(root);
     }
 
-    public void inorder(Node<T> node) {
+    public void inorder(Node<Integer> node) {
         if (node != null) {
             inorder(node.left);
             System.out.print(node.data + "=>");
@@ -97,7 +97,7 @@ public class BinarySearchTree<T extends Integer> {
         this.preOrder(root);
     }
 
-    public void preOrder(Node<T> node) {
+    public void preOrder(Node<Integer> node) {
         if (node != null) {
             System.out.print(node.data + "=>");
             inorder(node.left);
@@ -109,7 +109,7 @@ public class BinarySearchTree<T extends Integer> {
         this.postOrder(root);
     }
 
-    public void postOrder(Node<T> node) {
+    public void postOrder(Node<Integer> node) {
         if (node != null) {
             inorder(node.left);
             inorder(node.right);
@@ -120,7 +120,7 @@ public class BinarySearchTree<T extends Integer> {
     public int height(){
         return this.height(root);
     }
-    public int height(Node<T> node){
+    public int height(Node<Integer> node){
         if(node == null){
             return -1;
         }
@@ -135,7 +135,7 @@ public class BinarySearchTree<T extends Integer> {
     }
 
     private Node findMin(Node node) {
-        Node<T> current = node;
+        Node<Integer> current = node;
         while (current != null && current.left != null) {
             current = current.left;
         }
@@ -147,7 +147,7 @@ public class BinarySearchTree<T extends Integer> {
     }
 
     private Node findMax(Node node) {
-        Node<T> current = node;
+        Node<Integer> current = node;
         while (current != null && current.right != null) {
             current = current.right;
         }
