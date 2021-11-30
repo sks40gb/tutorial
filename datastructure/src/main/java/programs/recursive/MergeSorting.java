@@ -1,10 +1,10 @@
 package programs.recursive;
 
-public class ArraySorting {
+public class MergeSorting {
 
     public static void main(String[] args) {
-        int[] arr = {2, 4, 1, 5, 3, 9};
-        int[] sortedArray = sort(arr, 0, arr.length - 1);
+        int[] arr = {12,11,13,5,6,7};
+        int[] sortedArray = mergeSort(arr, 0, arr.length - 1);
         System.out.println("-------");
         for (int item : sortedArray) {
             System.out.println(item);
@@ -12,13 +12,13 @@ public class ArraySorting {
         System.out.println("-------");
     }
 
-    private static int[] sort(int[] arr, int startIndex, int endIndex) {
+    private static int[] mergeSort(int[] arr, int startIndex, int endIndex) {
         if (startIndex == endIndex) {
             return new int[]{arr[startIndex]};
         } else {
             int midIndex = (startIndex + endIndex) / 2;
-            int[] leftArray = sort(arr, startIndex, midIndex);
-            int[] rightArray = sort(arr, midIndex + 1, endIndex);
+            int[] leftArray = mergeSort(arr, startIndex, midIndex);
+            int[] rightArray = mergeSort(arr, midIndex + 1, endIndex);
             int[] result = new int[leftArray.length + rightArray.length];
 
             for (int i = 0, l = 0, r = 0; i < result.length; i++) {
