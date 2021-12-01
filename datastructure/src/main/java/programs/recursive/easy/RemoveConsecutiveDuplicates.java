@@ -6,24 +6,21 @@ public class RemoveConsecutiveDuplicates {
     }
 
     public static String removeConsecutiveDuplicates(String s) {
-        return removeDuplicate(s, "", 0);
+        return removeDuplicate(s, 0, null);
     }
 
-    private static String removeDuplicate(String input, String acc, int index) {
+    private static String removeDuplicate(String input, int index, Character lastChar) {
         if (index >= input.length()) {
             return "";
         }
         char c = input.charAt(index);
+        index++;
 
-        if (isLastCharMatching(acc, c)) {
-           return removeDuplicate(input, acc, index+1);
-        }else{
-            return c + removeDuplicate(input, acc + input.charAt(index), index+1);
+        if (lastChar != null && c == lastChar) {
+            return removeDuplicate(input, index, lastChar);
+        } else {
+            return c + removeDuplicate(input, index, c);
         }
-    }
-
-    private static boolean isLastCharMatching(String acc, char c) {
-        return acc.length() > 0 && acc.charAt(acc.length() - 1) == c;
     }
 
 }
