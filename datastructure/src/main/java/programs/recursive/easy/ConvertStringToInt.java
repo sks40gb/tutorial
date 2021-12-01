@@ -5,7 +5,7 @@ package programs.recursive.easy;
  * <p>
  * https://www.codingninjas.com/codestudio/problems/atoi_981270
  */
-public class ATOIFunction {
+public class ConvertStringToInt {
     public static void main(String[] args) {
         String input = "-pp1-53er";
         int output= convertToInt(input);
