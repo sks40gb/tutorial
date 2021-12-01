@@ -1,4 +1,4 @@
-package programs.recursive;
+package programs.recursive.easy;
 
 public class Factorial {
 
