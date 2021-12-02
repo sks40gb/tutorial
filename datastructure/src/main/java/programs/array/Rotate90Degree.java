@@ -38,8 +38,8 @@ public class Rotate90Degree {
         int l = input.length;
         for (int i = 0; i < l; i++) {
             for (int j = 0; j < input[i].length; j++) {  // [1,2,3]
-                int v = input[i][j];
-                output[j][l - i - 1] = v;
+                int value = input[i][j];
+                output[j][l - i - 1] = value;
             }
         }
         return output;
