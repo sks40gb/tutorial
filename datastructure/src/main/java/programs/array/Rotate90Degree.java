@@ -13,34 +13,35 @@ package programs.array;
  *
  * rotate 90 degrees clockwise and print to console
  *
- * 7,4,1
- * 8,5,2
- * 9,6,3
+ * [7,4,1]
+ * [8,5,2]
+ * [9,6,3]
  *
  */
 public class Rotate90Degree {
-
     public static void main(String[] args) {
-        String[][] myMatrix = new String[][]{new String[]{"1", "2", "3"}, new String[]{"4", "5", "6"}, new String[]{"7", "8", "9"}};
-        rotateMatrix(myMatrix);
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9},
+        };
+        for (int[] row : rotate(matrix)) {
+            for (int v : row) {
+                System.out.print(v + " ");
+            }
+            System.out.println();
+        }
     }
 
-    public static void rotateMatrix(String[][] matrix) {
-        String[][] rotation = new String[3][3];
-
-        for (int row = matrix.length - 1; row >= 0; row--) {
-            for (int col = 0; col < matrix[row].length; col++) {
-                String v = matrix[row][col];
-                rotation[col][2 - row] = v;
+    public static int[][] rotate(int[][] input) {
+        int[][] output = new int[input.length][input.length];
+        int l = input.length;
+        for (int i = 0; i < l; i++) {
+            for (int j = 0; j < input[i].length; j++) {  // [1,2,3]
+                int v = input[i][j];
+                output[j][l - i - 1] = v;
             }
         }
-
-        for (int row = 0; row < rotation.length; row++) {
-            for (int col = 0; col < rotation[row].length; col++) {
-                System.out.print(rotation[row][col]);
-            }
-            System.out.println("");
-
-        }
+        return output;
     }
 }
