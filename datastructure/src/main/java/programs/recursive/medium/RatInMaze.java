@@ -7,7 +7,6 @@ import java.util.Vector;
  */
 public class RatInMaze {
     static Vector<String> possiblePaths = new Vector<>();
-    static String path = "";
     static final int MAX = 5;
 
 
@@ -18,12 +17,10 @@ public class RatInMaze {
             {0, 0, 0, 0, 1},
             {0, 0, 0, 0, 1}};
         int n = m.length;
-
-        printPath(m, n);
+        printPath(m, n,"");
     }
 
-    static boolean isSafe(int row, int col, int m[][],
-                          int n, boolean visited[][]) {
+    static boolean isSafe(int row, int col, int m[][], int n, boolean visited[][]) {
         if (row == -1 || row == n || col == -1 ||
             col == n || visited[row][col] ||
             m[row][col] == 0)
@@ -32,8 +29,7 @@ public class RatInMaze {
         return true;
     }
 
-    static void printPathUtil(int row, int col, int m[][],
-                              int n, boolean visited[][]) {
+    static void printPath(int row, int col, int m[][], int n, boolean visited[][], String path) {
 
         // This will check the initial point
         // (i.e. (0, 0)) to start the paths.
@@ -59,32 +55,28 @@ public class RatInMaze {
         // Check if downward move is valid
         if (isSafe(row + 1, col, m, n, visited)) {
             path += 'D';
-            printPathUtil(row + 1, col, m, n,
-                visited);
+            printPath(row + 1, col, m, n, visited, path);
             path = path.substring(0, path.length() - 1);
         }
 
         // Check if the left move is valid
         if (isSafe(row, col - 1, m, n, visited)) {
             path += 'L';
-            printPathUtil(row, col - 1, m, n,
-                visited);
+            printPath(row, col - 1, m, n, visited, path);
             path = path.substring(0, path.length() - 1);
         }
 
         // Check if the right move is valid
         if (isSafe(row, col + 1, m, n, visited)) {
             path += 'R';
-            printPathUtil(row, col + 1, m, n,
-                visited);
+            printPath(row, col + 1, m, n, visited, path);
             path = path.substring(0, path.length() - 1);
         }
 
         // Check if the upper move is valid
         if (isSafe(row - 1, col, m, n, visited)) {
             path += 'U';
-            printPathUtil(row - 1, col, m, n,
-                visited);
+            printPath(row - 1, col, m, n, visited, path);
             path = path.substring(0, path.length() - 1);
         }
 
@@ -95,12 +87,12 @@ public class RatInMaze {
 
     // Function to store and print
 // all the valid paths
-    static void printPath(int m[][], int n) {
+    static void printPath(int m[][], int n, String path) {
         boolean[][] visited = new boolean[n][MAX];
 
         // Call the utility function to
         // find the valid paths
-        printPathUtil(0, 0, m, n, visited);
+        printPath(0, 0, m, n, visited, path);
 
         // Print all possible paths
         for (int i = 0; i < possiblePaths.size(); i++)
