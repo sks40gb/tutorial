@@ -5,19 +5,28 @@ package algorithm.twopointer;
  */
 public class TwoSum2 {
 
-    public int[] twoSum(int[] numbers, int target) {
-        if (numbers == null || numbers.length < 2) {
-            return null;
+    public static void main(String[] args) {
+        int[] sortedNumbers = {2, 7, 11, 15};
+        int target = 9;
+        // Output: [1,2]
+        for (int i : twoSum(sortedNumbers, target)) {
+            System.out.println(i);
         }
+    }
 
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = i + 1; j < numbers.length; j++) {
-                if (numbers[i] + numbers[j] > target) {
-                    break;
-                }
-                if (numbers[i] + numbers[j] == target) {
-                    return new int[]{i, j};
-                }
+    public static int[] twoSum(int[] numbers, int target) {
+        int left = 0;
+        int right = numbers.length - 1;
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
+            if (sum == target) {
+                return new int[]{left + 1, right + 1};
+            }
+            if (sum > target) {
+                right--;
+            }
+            if (sum < target) {
+                left++;
             }
         }
         return null;
