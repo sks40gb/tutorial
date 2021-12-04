@@ -1,9 +1,11 @@
-package programs.recursive.medium;
+package algorithm.recursive.medium;
 
 import java.util.Vector;
 
 /**
- * https://www.geeksforgeeks.org/rat-in-a-maze-problem-when-movement-in-all-possible-directions-is-allowed/
+ * https://www.geeksforgeeks.org/rat-in-a-maze-problem-when-movement-in-all-possible-directions-is-allowed
+ *
+ * Output : DDRRURRDDD DDRURRRDDD DRDRURRDDD DRRRRDDD
  */
 public class RatInMaze {
     static Vector<String> possiblePaths = new Vector<>();

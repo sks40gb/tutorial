@@ -1,4 +1,4 @@
-package programs.recursive;
+package algorithm.recursive;
 
 public class MergeSorting {
 

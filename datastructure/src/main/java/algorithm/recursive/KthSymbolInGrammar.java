@@ -1,4 +1,4 @@
-package programs.recursive;
+package algorithm.recursive;
 
 /**
  * https://leetcode.com/problems/k-th-symbol-in-grammar/

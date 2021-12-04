@@ -1,4 +1,4 @@
-package programs.recursive.easy;
+package algorithm.recursive.easy;
 
 public class RemoveConsecutiveDuplicates {
     public static void main(String[] args) {

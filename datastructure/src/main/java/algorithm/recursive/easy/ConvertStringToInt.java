@@ -1,4 +1,4 @@
-package programs.recursive.easy;
+package algorithm.recursive.easy;
 
 /**
  * String to int

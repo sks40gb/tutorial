@@ -1,4 +1,4 @@
-package programs.recursive;
+package algorithm.recursive;
 
 import programs.binarytree.Node;
 import programs.binarytree.BinarySearchTree;
