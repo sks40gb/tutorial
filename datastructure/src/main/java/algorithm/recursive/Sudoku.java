@@ -15,16 +15,10 @@ public class Sudoku {
                 {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
-        System.out.println(sudoku.resolve(board));
+        System.out.println(sudoku.solve(board));
     }
 
-    public boolean resolve(char[][] board) {
-
-//        if (isSolved(board)) {
-//            System.out.println("--------------");
-//            printBoard(board);
-//            return true;
-//        }
+    public boolean solve(char[][] board) {
 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -34,7 +28,7 @@ public class Sudoku {
                 for (char c = '1'; c <= '9'; c++) {
                     if (isSafe(board, i, j, c)) {
                         board[i][j] = c;
-                        if (resolve(board)) {
+                        if (solve(board)) {
                             return true;
                         } else {
                             board[i][j] = '.';
