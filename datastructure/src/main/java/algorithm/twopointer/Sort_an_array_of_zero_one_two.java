@@ -3,11 +3,11 @@ package algorithm.twopointer;
 public class Sort_an_array_of_zero_one_two {
 
     public static void main(String[] args) {
-        int[] arr = {0, 1, 2, 0, 1, 2};
-        sort(arr);
-        for (int i : arr) {
-            System.out.print(i);
+        for (int i = 0; i < 9; i++) {
+            int n = (i / 3) * 3;
+            System.out.println(n);
         }
+
     }
 
     public static void sort(int[] arr) {
