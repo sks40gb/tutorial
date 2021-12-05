@@ -35,9 +35,8 @@ public class Sudoku {
                             board[i][j] = '.';
                         }
                     }
-                    return  false;
                 }
-
+                return false;
             }
         }
         return true;
@@ -66,17 +65,6 @@ public class Sudoku {
                 return false;
             }
 
-        }
-        return true;
-    }
-
-    public boolean isSolved(char[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] == '.') {
-                    return false;
-                }
-            }
         }
         return true;
     }
