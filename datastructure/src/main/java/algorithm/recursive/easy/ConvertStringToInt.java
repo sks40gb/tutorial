@@ -7,7 +7,7 @@ package algorithm.recursive.easy;
  */
 public class ConvertStringToInt {
     public static void main(String[] args) {
-        String input = "-pp1-53er";
+        String input = "-pp1-53er"; //-153
         int output= convertToInt(input);
         System.out.print(output);
     }
