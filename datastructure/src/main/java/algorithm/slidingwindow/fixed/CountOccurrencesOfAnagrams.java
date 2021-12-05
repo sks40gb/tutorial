@@ -1,8 +1,6 @@
-package programs.slidingwindow.fixed;
+package algorithm.slidingwindow.fixed;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Count Occurrences of Anagrams

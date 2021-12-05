@@ -1,4 +1,4 @@
-package programs.slidingwindow.fixed;
+package algorithm.slidingwindow.fixed;
 
 import java.util.*;
 

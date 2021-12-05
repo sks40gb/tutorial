@@ -1,4 +1,4 @@
-package programs.slidingwindow.variable;
+package algorithm.slidingwindow.variable;
 
 /**
  * Longest sub-array having sum k
