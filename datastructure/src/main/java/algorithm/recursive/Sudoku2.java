@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.recursive;
 
 /**
  * https://leetcode.com/problems/sudoku-solver/
