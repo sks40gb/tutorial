@@ -9,15 +9,16 @@ package algorithm.recursive;
  */
 public class FriendsPartyPlan {
 
+
     public static void main(String[] args) {
-        String input = "ABCDE";
+        String input = "ABCDEFGH";
         System.out.println(findWays(input, ""));
-        System.out.println(anotherQuickSolution(5));
+        System.out.println(anotherQuickSolution(input.length()));
     }
 
     public static int findWays(String input, String output) {
         if (input.length() == 0) {
-            System.out.println("input : " + output);
+            System.out.println("output : " + output);
             return 1;
         }
         char c = input.charAt(0);
