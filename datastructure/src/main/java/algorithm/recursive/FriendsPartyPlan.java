@@ -12,7 +12,7 @@ public class FriendsPartyPlan {
     public static void main(String[] args) {
         String input = "ABCDE";
         System.out.println(findWays(input, ""));
-        System.out.println(f(5));
+        System.out.println(anotherQuickSolution(5));
     }
 
     public static int findWays(String input, String output) {
@@ -36,10 +36,10 @@ public class FriendsPartyPlan {
         return input.substring(0, index) + input.substring(index + 1);
     }
 
-    public static int f(int n) {
+    public static int anotherQuickSolution(int n) {
         if (n == 1 || n == 2) {
             return n;
         }
-        return f(n - 1) + (n - 1) * f(n - 2);
+        return anotherQuickSolution(n - 1) + (n - 1) * anotherQuickSolution(n - 2);
     }
 }
