@@ -1,4 +1,4 @@
-package programs.linkedlist;
+package algorithm.recursive;
 
 /***
  * Friend either they can go alone or in pair.
