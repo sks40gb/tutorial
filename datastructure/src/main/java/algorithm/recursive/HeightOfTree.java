@@ -1,8 +1,8 @@
 package algorithm.recursive;
 
-import programs.binarytree.Node;
-import programs.binarytree.BinarySearchTree;
-import programs.binarytree.BinaryTreePrinter;
+import programs.tree.Node;
+import programs.tree.BinarySearchTree;
+import programs.tree.BinaryTreePrinter;
 
 public class HeightOfTree {
 
