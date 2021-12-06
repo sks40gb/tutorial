@@ -1,12 +1,12 @@
-package algorithm.recursive;
+package algorithm;
 
 /**
  * https://leetcode.com/problems/sudoku-solver/
  */
-public class Sudoku {
+public class Sudoku2 {
 
     public static void main(String[] args) {
-        Sudoku sudoku = new Sudoku();
+        Sudoku2 sudoku = new Sudoku2();
         char[][] board =
             {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
                 {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
@@ -18,35 +18,28 @@ public class Sudoku {
                 {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
-        System.out.println(sudoku.solve(board));
+        System.out.println(sudoku.solve(board, 0, 0));
         sudoku.printBoard(board);
     }
 
-    public boolean solve(char[][] board) {
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (isFilled(board, i, j)) {
-                    continue;
+    boolean solve(char[][] board, int i, int j) {
+
+        if (i == 9) return true;
+        if (j == 9) return solve(board, i + 1, 0);
+        if (board[i][j] != '.') return solve(board, i, j + 1);
+
+        for (char c = '1'; c <= '9'; c++) {
+            if (isSafe(board, i, j, c)) {
+                board[i][j] = c;
+                if (solve(board, i, j + 1)) {
+                    return true;
+                } else {
+                    board[i][j] = '.'; //backtrack
                 }
-                for (char c = '1'; c <= '9'; c++) {
-                    if (isSafe(board, i, j, c)) {
-                        board[i][j] = c;
-                        if (solve(board)) {
-                            return true;
-                        } else {
-                            board[i][j] = '.';
-                        }
-                    }
-                }
-                return false;
             }
         }
-        return true;
-    }
-
-    private boolean isFilled(char[][] board, int i, int j) {
-        return board[i][j] != '.';
+        return false;
     }
 
     public boolean isSafe(char[][] board, int row, int col, char c) {
