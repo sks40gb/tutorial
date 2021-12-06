@@ -1,28 +1,35 @@
 package programs.linkedlist;
 
-public class Test {
+/***
+ * Friend either they can go alone or in pair.
+ * Find the number of ways they can go.
+ *
+ * Ex : 1 person A can go only 1 way
+ *      2 person AB can go alone A & B or AB together
+ */
+public class FriendsPartyPlan {
 
     public static void main(String[] args) {
-        String input = "ABCDEF";
-       findWays(input,"");
-//        System.out.println(removeChar("sunil", 4));
-        System.out.println(f(6));
+        String input = "ABCDE";
+        System.out.println(findWays(input, ""));
+        System.out.println(f(5));
     }
 
-    public static void findWays(String input, String output) {
+    public static int findWays(String input, String output) {
         if (input.length() == 0) {
             System.out.println("input : " + output);
-            return;
+            return 1;
         }
         char c = input.charAt(0);
-        output += c;
         String str = removeChar(input, 0);
-        findWays(str, output);
+        int count = 0;
+        count = count + findWays(str, output + "[" + c + "]");
         for (int i = 0; i < str.length(); i++) {
-            c = str.charAt(i);
+            char c2 = str.charAt(i);
             String newInput = removeChar(str, i);
-            findWays(newInput,output+c);
+            count = count + findWays(newInput, output + "[" + c + "," + c2 + "]");
         }
+        return count;
     }
 
     private static String removeChar(String input, int index) {
