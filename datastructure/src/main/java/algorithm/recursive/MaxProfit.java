@@ -8,15 +8,13 @@ public class MaxProfit {
     public static void main(String[] args) {
         int[] arr = {12, 14, 17, 10, 14, 13, 12, 15};
         Map<Key, Integer> memo = new HashMap<>();
-        System.out.println("Max profit : " + maxProfit(arr, 6, true, 0, 0, memo));
+        int transaction = 3;
+        System.out.println("Max profit : " + maxProfit(arr, transaction * 2, true, 0, 0, memo));
     }
 
     private static int maxProfit(int[] arr, int k, boolean buy, int index, int profit, Map<Key, Integer> memo) {
-        if (k == 0) {
-            System.out.println("Profit: " + profit);
-            return profit;
-        }
-        if (index == arr.length) {
+
+        if (index == arr.length || k == 0) {
             System.out.println("Profit: " + profit);
             return profit;
         }
