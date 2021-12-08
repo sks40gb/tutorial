@@ -1,9 +1,22 @@
-package algorithm.recursive;
+package algorithm.backtracking;
 
+/**
+ * Input - ABC
+ *
+ * Output
+ * ---------------------
+ * ABC
+ * ACB
+ * BAC
+ * BCA
+ * CBA
+ * CAB
+ *
+ */
 public class StringPermutation {
 
     public static void main(String[] args) {
-        new StringPermutation().stringPrint("ABC");
+        new  StringPermutation().stringPrint("ABC");
     }
 
     public void stringPrint(String s) {
@@ -15,13 +28,14 @@ public class StringPermutation {
     public void print(char[] arr, int index) {
         if (index == arr.length - 1) {
             printArray(arr);
-        } else {
-            for (int i = index; i <= arr.length -1; i++) {
-                swap(arr, index, i);
-                print(arr, index + 1);
-                swap(arr, i, index);
-            }
+            return;
         }
+        for(int i = index; i <= arr.length - 1; i++){
+            swap(arr, index, i);
+            print(arr, index + 1);
+            swap(arr, index, i);  //<-- backtracking
+        }
+
     }
 
     private void swap(char[] arr, int first, int second) {
@@ -36,5 +50,4 @@ public class StringPermutation {
         }
         System.out.println("");
     }
-
 }
