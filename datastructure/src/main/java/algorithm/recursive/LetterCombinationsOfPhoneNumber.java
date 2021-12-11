@@ -1,6 +1,8 @@
 package algorithm.recursive;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LetterCombinationsOfPhoneNumber {
@@ -22,20 +24,23 @@ public class LetterCombinationsOfPhoneNumber {
 
     public static void main(String[] args) {
         LetterCombinationsOfPhoneNumber l = new LetterCombinationsOfPhoneNumber();
-        l.findLetters("245", "");
+        System.out.println(l.findLetters("", ""));
     }
 
-    public void findLetters(String digit, String prefix) {
+    public List<String> findLetters(String digit, String prefix) {
+        List<String> l = new ArrayList<>();
+
         if (digit.length() <= 0) {
-            System.out.println(prefix);
-            return;
+            l.add(prefix);
+            return l;
         }
 
         String substring = digit.substring(1);
         Integer n = Integer.parseInt(String.valueOf(digit.charAt(0)));
 
         for (char c : map.get(n).toCharArray()) {
-            findLetters(substring, prefix + c);
+            l.addAll(findLetters(substring, prefix + c));
         }
+        return l;
     }
 }
