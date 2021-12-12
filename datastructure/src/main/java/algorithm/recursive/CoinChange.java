@@ -1,5 +1,7 @@
 package algorithm.recursive;
 
+import java.util.Arrays;
+
 /**
  * https://www.geeksforgeeks.org/coin-change-dp-7/
  */
@@ -10,8 +12,10 @@ public class CoinChange {
         int k = 10;
         System.out.println("--- count-----");
         System.out.println(solution1(arr, arr.length, 10));
+        System.out.println("--- count-----");
+        System.out.println(solution2(arr, arr.length, 10));
         System.out.println("----- set -----");
-        solution2(arr, k, 0, "", 0);
+        solution4(arr, k, 0, "", 0);
     }
 
 
@@ -38,6 +42,27 @@ public class CoinChange {
             solution1(arr, index, k - arr[index - 1]);
     }
 
+    static long solution2(int arr[], int index, int k) {
+        //Time complexity of this function: O(mn)
+        //Space Complexity of this function: O(n)
+        long[] table = new long[k + 1];
+
+        // Initialize all table values as 0
+        Arrays.fill(table, 0);   //O(n)
+
+        // Base case (If given value is 0)
+        table[0] = 1;
+        // Pick all coins one by one and update the table[]
+        // values after the index greater than or equal to
+        // the value of the picked coin
+        for (int i = 0; i < index; i++)
+            for (int j = arr[i]; j <= k; j++)
+                table[j] += table[j - arr[i]];
+
+        return table[k];
+    }
+
+
     /**
      * Output
      * ----------------------
@@ -47,7 +72,7 @@ public class CoinChange {
      * 253
      * 55
      */
-    private static void solution2(int[] coins, int k, int sum, String result, int index) {
+    private static void solution4(int[] coins, int k, int sum, String result, int index) {
         if (index >= coins.length) {
             return;
         }
@@ -57,8 +82,8 @@ public class CoinChange {
         } else if (sum > k) {
             return;
         }
-        solution2(coins, k, sum + coins[index], result + coins[index], index);
-        solution2(coins, k, sum, result, index + 1);
+        solution4(coins, k, sum + coins[index], result + coins[index], index);
+        solution4(coins, k, sum, result, index + 1);
     }
 
 
