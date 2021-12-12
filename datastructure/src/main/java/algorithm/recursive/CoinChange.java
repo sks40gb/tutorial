@@ -8,9 +8,34 @@ public class CoinChange {
     public static void main(String[] args) {
         int[] arr = {2, 5, 3, 6};
         int k = 10;
-        solution1(arr, k, 0, "", 0);
         System.out.println("--- count-----");
-        System.out.println(solution2(arr, k, 0, 0));
+        System.out.println(solution1(arr, arr.length, 10));
+        System.out.println("----- set -----");
+        solution2(arr, k, 0, "", 0);
+    }
+
+
+    /**
+     * Output : 5
+     */
+    static int solution1(int arr[], int index, int k) {
+
+        if (k == 0) {
+            return 1;
+        }
+
+        if (k < 0) {
+            return 0;
+        }
+
+        if (index <= 0 && k >= 1) {
+            return 0;
+        }
+
+        // count is sum of solutions (i)
+        // including arr[index-1] (ii) excluding arr[index-1]
+        return solution1(arr, index - 1, k) +
+            solution1(arr, index, k - arr[index - 1]);
     }
 
     /**
@@ -22,7 +47,7 @@ public class CoinChange {
      * 253
      * 55
      */
-    private static void solution1(int[] coins, int k, int sum, String result, int index) {
+    private static void solution2(int[] coins, int k, int sum, String result, int index) {
         if (index >= coins.length) {
             return;
         }
@@ -32,23 +57,9 @@ public class CoinChange {
         } else if (sum > k) {
             return;
         }
-        solution1(coins, k, sum + coins[index], result + coins[index], index);
-        solution1(coins, k, sum, result, index + 1);
+        solution2(coins, k, sum + coins[index], result + coins[index], index);
+        solution2(coins, k, sum, result, index + 1);
     }
 
-    /**
-     * Output : 5
-     */
-    private static int solution2(int[] coins, int k, int sum, int index) {
-        if (index >= coins.length) {
-            return 0;
-        }
-        if (sum == k) {
-            return 1;
-        } else if (sum > k) {
-            return 0;
-        }
-        return solution2(coins, k, sum + coins[index], index) + solution2(coins, k, sum, index + 1);
-    }
 
 }
