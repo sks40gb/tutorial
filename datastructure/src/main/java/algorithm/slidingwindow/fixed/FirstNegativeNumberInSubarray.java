@@ -7,7 +7,7 @@ import java.util.List;
  * First Negative Number in every Window of Size K
  *
  * Input : arr[] = {12, -1, -7, 8, -15, 30, 16, 28} , k = 3
- * Output : -1 -1 -7 -15 -15 0
+ * Output : -1 -1 -7 -15 -15
  *
  */
 public class FirstNegativeNumberInSubarray {
