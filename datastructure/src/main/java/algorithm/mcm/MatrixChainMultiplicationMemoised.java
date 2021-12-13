@@ -6,9 +6,10 @@ import java.util.Arrays;
  * Given a sequence of matrices, find the most efficient way to multiply these matrices together.
  * The problem is not actually to perform the multiplications, but merely to decide in which order
  * to perform the multiplications.
+ *
+ * A naive recursive implementation that simply follows
+ * the above optimal substructure property
  */
- /* A naive recursive implementation that simply follows
-       the above optimal substructure property */
 class MatrixChainMultiplicationMemoised {
     static int[][] dp = new int[100][100];
 
