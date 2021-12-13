@@ -25,5 +25,4 @@ public class EggDroppingPuzzle {
         return min + 1;
     }
 
-
 }
