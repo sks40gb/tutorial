@@ -1,14 +1,13 @@
 package programs.stack;
 
-// A Stack based Java program to find next
-// greater element for all array elements
-// in same order as input.
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * https://www.geeksforgeeks.org/next-greater-element/
+ */
 class NextGreaterElement {
 
     public static void main(String[] args) {
@@ -21,42 +20,20 @@ class NextGreaterElement {
         List<Integer> result = new ArrayList<>();
 
         for (int i = arr.length - 1; i >= 0; i--) {
-            if (stack.isEmpty()) {
-                result.add(-1);
-                stack.add(arr[i]);
-            } else {
-                while (!stack.isEmpty() && stack.peek() < arr[i]) {
+            if (!stack.isEmpty()) {
+                while (!stack.isEmpty() && arr[i] > stack.peek()) {
                     stack.pop();
                 }
-                if (stack.isEmpty()) {
-                    result.add(-1);
-                } else {
-                    result.add(stack.peek());
-                }
-                stack.push(arr[i]);
             }
+            if (stack.isEmpty()) {
+                result.add(-1);
+            } else {
+                result.add(stack.peek());
+            }
+            stack.add(arr[i]);
         }
         Collections.reverse(result);
         return result;
     }
-
-//    public static void printNGE(int arr[]) {
-//        Stack<Integer> s = new Stack<>();
-//        int nge[] = new int[arr.length];
-//
-//        for (int i = arr.length - 1; i >= 0; i--) {
-//            if (!s.empty()) {
-//                while (!s.empty()
-//                    && s.peek() <= arr[i]) {
-//                    s.pop();
-//                }
-//            }
-//            nge[i] = s.empty() ? -1 : s.peek();
-//            s.push(arr[i]);
-//        }
-//        for (int i = 0; i < arr.length; i++)
-//            System.out.println(arr[i] +
-//                " --> " + nge[i]);
-//    }
 
 }
