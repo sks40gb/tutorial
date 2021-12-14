@@ -20,10 +20,8 @@ class NextGreaterElement {
         List<Integer> result = new ArrayList<>();
 
         for (int i = arr.length - 1; i >= 0; i--) {
-            if (!stack.isEmpty()) {
-                while (!stack.isEmpty() && arr[i] > stack.peek()) {
-                    stack.pop();
-                }
+            while (!stack.isEmpty() && arr[i] > stack.peek()) {
+                stack.pop();
             }
             if (stack.isEmpty()) {
                 result.add(-1);
