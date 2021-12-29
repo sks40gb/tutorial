@@ -51,8 +51,8 @@ public class MergeSorting {
         //copy right left over items
         while(rightIndex  <= high){
             result[resultIndex] =arr[rightIndex];
-            leftIndex++;
             rightIndex++;
+            resultIndex++;
         }
         
         //Copy to existing array
