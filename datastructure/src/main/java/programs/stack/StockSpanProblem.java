@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 public class StockSpanProblem {
     public static void main(String[] args) {
-        int[] arr = {10, 4, 5, 90, 120, 80};
+        int[] arr = {100, 80, 60, 70, 60, 75, 85};
         List<Integer> result = resolve(arr);
         System.out.println(result);
     }
