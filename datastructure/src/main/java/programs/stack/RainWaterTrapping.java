@@ -41,22 +41,12 @@ public class RainWaterTrapping {
         // Stores the indices of the bars
         Stack<Integer> stack = new Stack<>();
 
-        // size of the array
         int n = arr.length;
-
-        // Stores the final result
         int ans = 0;
-
-        // Loop through the each bar
         for (int i = 0; i < n; i++) {
 
-            // Remove bars from the stack
-            // until the condition holds
-            while ((!stack.isEmpty())
-                && (arr[stack.peek()] < arr[i])) {
+            while ((!stack.isEmpty()) && (arr[stack.peek()] < arr[i])) {
 
-                // store the height of the top
-                // and pop it.
                 int pop_height = arr[stack.peek()];
                 stack.pop();
 
@@ -72,17 +62,10 @@ public class RainWaterTrapping {
                 int distance = i - stack.peek() - 1;
 
                 // Calculate the min. height
-                int min_height
-                    = Math.min(arr[stack.peek()],
-                    arr[i])
-                    - pop_height;
+                int min_height = Math.min(arr[stack.peek()], arr[i]) - pop_height;
 
                 ans += distance * min_height;
             }
-
-            // If the stack is either empty or
-            // height of the current bar is less than
-            // or equal to the top bar of stack
             stack.push(i);
         }
         return ans;
