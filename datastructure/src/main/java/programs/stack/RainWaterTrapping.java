@@ -19,6 +19,7 @@ public class RainWaterTrapping {
         int[] input = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         System.out.println(solution1(input));
         System.out.println(solution2(input));
+        System.out.println(solution3(input));
     }
 
     private static int solution1(int[] input) {
@@ -34,6 +35,26 @@ public class RainWaterTrapping {
             }
         }
         return area;
+    }
+
+    private static int[] getLeftMax(int[] input) {
+
+        int[] max = new int[input.length];
+        //Exclude the current element
+        for (int i = 1; i < input.length - 1; i++) {
+            max[i] = Math.max(max[i - 1], input[i - 1]);
+        }
+        return max;
+    }
+
+
+    private static int[] getRightMax(int[] input) {
+        int[] max = new int[input.length];
+        //Exclude the current element
+        for (int i = input.length - 2; i >= 0; i--) {
+            max[i] = Math.max(max[i + 1], input[i + 1]);
+        }
+        return max;
     }
 
     /**
@@ -70,24 +91,33 @@ public class RainWaterTrapping {
         return ans;
     }
 
-    private static int[] getLeftMax(int[] input) {
+    /**
+     * Using two pointer technique
+     */
+    public static int solution3(int[] arr) {
 
-        int[] max = new int[input.length];
-        //Exclude the current element
-        for (int i = 1; i < input.length - 1; i++) {
-            max[i] = Math.max(max[i - 1], input[i - 1]);
+        int length = arr.length;
+        int maxLeft = 0, maxRight = 0, totalWater = 0, pL = 0, pR = length - 1;
+        while (pL < pR) {
+            int leftPointerValue = arr[pL];
+            int rightPointerValue = arr[pR];
+            if (leftPointerValue <= rightPointerValue) {
+                if (leftPointerValue >= maxLeft) {
+                    maxLeft = leftPointerValue;
+                } else {
+                    totalWater += maxLeft - leftPointerValue;
+                }
+                pL++;
+            } else {
+                if (rightPointerValue >= maxRight) {
+                    maxRight = rightPointerValue;
+                } else {
+                    totalWater += maxRight - rightPointerValue;
+                }
+                pR--;
+            }
         }
-        return max;
-    }
-
-
-    private static int[] getRightMax(int[] input) {
-        int[] max = new int[input.length];
-        //Exclude the current element
-        for (int i = input.length - 2; i >= 0; i--) {
-            max[i] = Math.max(max[i + 1], input[i + 1]);
-        }
-        return max;
+        return totalWater;
     }
 
 }
