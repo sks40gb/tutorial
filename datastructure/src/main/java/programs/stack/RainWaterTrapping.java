@@ -34,6 +34,7 @@ public class RainWaterTrapping {
     private static int[] getLeftMax(int[] input){
 
         int[] max = new int[input.length];
+        //Exclude the current element
         for(int i = 1; i < input.length -1; i++){
             max[i] = Math.max(max[i-1], input[i-1]);
         }
@@ -43,6 +44,7 @@ public class RainWaterTrapping {
 
     private static int[] getRightMax(int[] input){
         int[] max = new int[input.length];
+        //Exclude the current element
         for(int i = input.length -2; i >= 0; i--){
             max[i] = Math.max(max[i+1], input[i+1]);
         }
