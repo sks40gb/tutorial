@@ -34,6 +34,9 @@ public class RainWaterTrapping {
         return area;
     }
 
+    /**
+     * Solution using Stack
+     */
     public static int solution2(int[] arr) {
         // Stores the indices of the bars
         Stack<Integer> stack = new Stack<>();
