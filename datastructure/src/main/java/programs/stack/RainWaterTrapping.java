@@ -3,6 +3,8 @@ package programs.stack;
 import java.util.Stack;
 
 /**
+ * https://www.geeksforgeeks.org/trapping-rain-water/
+ *
  * Example :
  *
  * Input : {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
@@ -47,14 +49,11 @@ public class RainWaterTrapping {
 
             while ((!stack.isEmpty()) && (arr[stack.peek()] < arr[i])) {
 
-                int pop_height = arr[stack.peek()];
-                stack.pop();
+                int popHeight = arr[stack.pop()];
 
-                // If the stack does not have any
-                // bars or the the popped bar
-                // has no left boundary
-                if (stack.isEmpty())
+                if (stack.isEmpty()) {
                     break;
+                }
 
                 // Get the distance between the
                 // left and right boundary of
@@ -62,7 +61,7 @@ public class RainWaterTrapping {
                 int distance = i - stack.peek() - 1;
 
                 // Calculate the min. height
-                int min_height = Math.min(arr[stack.peek()], arr[i]) - pop_height;
+                int min_height = Math.min(arr[stack.peek()], arr[i]) - popHeight;
 
                 ans += distance * min_height;
             }
