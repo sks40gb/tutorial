@@ -4,12 +4,12 @@ import java.util.Stack;
 
 /**
  * https://www.geeksforgeeks.org/trapping-rain-water/
- *
+ * <p>
  * Example :
- *
+ * <p>
  * Input : {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
  * Output : 6
- *
+ * <p>
  * Input : {3, 0, 2, 0, 4}
  * Output : 7
  */
@@ -98,7 +98,12 @@ public class RainWaterTrapping {
     public static int solution3(int[] arr) {
 
         int length = arr.length;
-        int maxLeft = 0, maxRight = 0, totalWater = 0, pL = 0, pR = length - 1;
+        int maxLeft = 0;
+        int maxRight = 0;
+        int totalWater = 0;
+        int pL = 0;
+        int pR = length - 1;
+
         while (pL < pR) {
             int leftPointerValue = arr[pL];
             int rightPointerValue = arr[pR];
