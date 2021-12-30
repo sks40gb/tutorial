@@ -13,6 +13,7 @@ package algorithm.slidingwindow.variable;
  * Output : 5
  */
 public class LongestSubarray {
+
     public static void main(String[] args) {
        testWithPositiveNumbersOnly();
        testWithNegativeNumbers();
