@@ -93,6 +93,7 @@ public class RainWaterTrapping {
 
     /**
      * Using two pointer technique
+     * https://youtu.be/m18Hntz4go8?t=534
      */
     public static int solution3(int[] arr) {
 
