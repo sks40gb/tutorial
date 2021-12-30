@@ -17,6 +17,7 @@ import java.util.Map;
  * There are substrings with exactly 3 unique characters
  * {"aabbcc" , "abbcc" , "aabbc" , "abbc" }
  * Max is "aabbcc" with length 6.
+ *
  * "aaabbb", k = 3
  * There are only two unique characters, thus show error message.
  */
