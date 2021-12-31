@@ -31,12 +31,13 @@ public class FriendsPartyPlan {
             return 1;
         }
         char c = input.charAt(0);
-        String str = removeChar(input, 0);
-        int count = 0;
-        count = count + findWays1(str, output + "[" + c + "]");
-        for (int i = 0; i < str.length(); i++) {
-            char c2 = str.charAt(i);
-            String newInput = removeChar(str, i);
+        String subString = removeChar(input, 0);
+
+        int count = findWays1(subString, output + "[" + c + "]");
+
+        for (int i = 0; i < subString.length(); i++) {
+            char c2 = subString.charAt(i);
+            String newInput = removeChar(subString, i);
             count = count + findWays1(newInput, output + "[" + c + "," + c2 + "]");
         }
         return count;
@@ -60,7 +61,7 @@ public class FriendsPartyPlan {
      * Using Dynamic Programming
      */
     private static int findWays3(int n, int[] dp) {
-        if(dp[n] != -1){
+        if (dp[n] != -1) {
             return dp[n];
         }
         if (n == 1 || n == 2) {
