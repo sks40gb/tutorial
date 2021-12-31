@@ -18,6 +18,7 @@ public class ReverseLinkedList {
         //reverseIterative(linkedList);
        linkedList.head = reverseRecursively(linkedList.head);
         System.out.println("After reverse");
+        System.out.println();
         linkedList.print();
     }
 
