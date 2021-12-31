@@ -1,5 +1,7 @@
 package algorithm.recursive;
 
+import java.util.Arrays;
+
 /***
  * Friend either they can go alone or in pair.
  * Find the number of ways they can go.
@@ -12,11 +14,18 @@ public class FriendsPartyPlan {
 
     public static void main(String[] args) {
         String input = "ABCDEFGH";
-        System.out.println(findWays(input, ""));
-        System.out.println(anotherQuickSolution(input.length()));
+        System.out.println(findWays1(input, ""));
+        System.out.println(findWays2(input.length()));
+
+        int[] dp = new int[input.length() + 1];
+        Arrays.fill(dp, -1);
+        System.out.println("With dynamic programming :  " + findWays3(input.length(), dp));
     }
 
-    public static int findWays(String input, String output) {
+    /**
+     * Not a actual solution but to explain the recursion.
+     */
+    public static int findWays1(String input, String output) {
         if (input.length() == 0) {
             System.out.println("output : " + output);
             return 1;
@@ -24,11 +33,11 @@ public class FriendsPartyPlan {
         char c = input.charAt(0);
         String str = removeChar(input, 0);
         int count = 0;
-        count = count + findWays(str, output + "[" + c + "]");
+        count = count + findWays1(str, output + "[" + c + "]");
         for (int i = 0; i < str.length(); i++) {
             char c2 = str.charAt(i);
             String newInput = removeChar(str, i);
-            count = count + findWays(newInput, output + "[" + c + "," + c2 + "]");
+            count = count + findWays1(newInput, output + "[" + c + "," + c2 + "]");
         }
         return count;
     }
@@ -37,10 +46,27 @@ public class FriendsPartyPlan {
         return input.substring(0, index) + input.substring(index + 1);
     }
 
-    public static int anotherQuickSolution(int n) {
+    /**
+     * Simple Solution
+     */
+    public static int findWays2(int n) {
         if (n == 1 || n == 2) {
             return n;
         }
-        return anotherQuickSolution(n - 1) + (n - 1) * anotherQuickSolution(n - 2);
+        return findWays2(n - 1) + (n - 1) * findWays2(n - 2);
+    }
+
+    /**
+     * Using Dynamic Programming
+     */
+    private static int findWays3(int n, int[] dp) {
+        if(dp[n] != -1){
+            return dp[n];
+        }
+        if (n == 1 || n == 2) {
+            return n;
+        }
+        dp[n] = findWays2(n - 1) + (n - 1) * findWays2(n - 2);
+        return dp[n];
     }
 }
