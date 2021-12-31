@@ -14,6 +14,7 @@ public class PalindromePartitioning {
         String str = "ababbbabbababa";
         System.out.println("Min cuts needed for "
             + "Palindrome Partitioning is " + minPartition(str, 0, str.length() - 1));
+        System.out.println("Min " + minCut(str, 0, str.length()-1));
     }
 
     static boolean isPalindrome(String string, int i, int j) {
@@ -29,9 +30,9 @@ public class PalindromePartitioning {
     static int minPartition(String string, int i, int j) {
         if (i >= j || isPalindrome(string, i, j))
             return 0;
-        int ans = Integer.MAX_VALUE, count;
+        int ans = Integer.MAX_VALUE;
         for (int k = i; k < j; k++) {
-            count = minPartition(string, i, k) + minPartition(string, k + 1, j) + 1;
+            int count = minPartition(string, i, k) + minPartition(string, k + 1, j) + 1;
             ans = Math.min(ans, count);
         }
         return ans;
