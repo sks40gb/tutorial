@@ -1,4 +1,4 @@
-package algorithm.recursive.medium;
+package algorithm.recursive;
 
 public class PermutationOfString {
 

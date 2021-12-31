@@ -1,4 +1,4 @@
-package algorithm.recursive.easy;
+package algorithm.recursive;
 
 public class Fibonacci {
 

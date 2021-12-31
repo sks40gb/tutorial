@@ -1,4 +1,4 @@
-package algorithm.recursive.medium;
+package algorithm.recursive;
 
 import java.util.Vector;
 
@@ -13,7 +13,7 @@ public class RatInMaze {
 
 
     public static void main(String[] args) {
-        int m[][] = {{1, 0, 0, 0, 0},
+        int[][] m = {{1, 0, 0, 0, 0},
             {1, 1, 1, 1, 1},
             {1, 1, 1, 0, 1},
             {0, 0, 0, 0, 1},
@@ -22,7 +22,7 @@ public class RatInMaze {
         printPath(m, n,"");
     }
 
-    static boolean isSafe(int row, int col, int m[][], int n, boolean visited[][]) {
+    static boolean isSafe(int row, int col, int[][] m, int n, boolean[][] visited) {
         if (row == -1 || row == n || col == -1 ||
             col == n || visited[row][col] ||
             m[row][col] == 0)
@@ -31,7 +31,7 @@ public class RatInMaze {
         return true;
     }
 
-    static void printPath(int row, int col, int m[][], int n, boolean visited[][], String path) {
+    static void printPath(int row, int col, int m[][], int n, boolean[][] visited, String path) {
 
         // This will check the initial point
         // (i.e. (0, 0)) to start the paths.
