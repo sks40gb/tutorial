@@ -12,7 +12,12 @@ public class EggDroppingPuzzle {
     public static void main(String[] args) {
         int eggs = 2;
         int floors = 10;
+        int[][] dp = new int[eggs+1][floors+1];
+        for (int egg = 0; egg < dp.length; egg++) {
+            Arrays.fill(dp[egg], -1);
+        }
         System.out.println(eggDrop3(eggs, floors)); //output : 4
+        System.out.println(eggDropDP(eggs, floors, dp)); //output : 4
         System.out.println(eggDrop(eggs, floors)); //output : 4
     }
 
@@ -45,7 +50,7 @@ public class EggDroppingPuzzle {
         int min = Integer.MAX_VALUE;
 
         for (int k = 1; k <= floors; k++) {
-            int res = Math.max(eggDrop(eggs - 1, k - 1), eggDrop(eggs, floors - k));
+            int res = Math.max(eggDropDP(eggs - 1, k - 1, dp), eggDropDP(eggs, floors - k, dp));
             min = Math.min(res, min);
         }
         dp[eggs][floors] = min + 1;
