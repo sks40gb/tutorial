@@ -39,7 +39,7 @@ public class ReverseLinkedList {
     //[1]->[2]->[3]->[4]      
     public static Node reverseRecursively(Node node) {  //1 ->2 ->3 ->4
          //base case - tail of original linked list 
-        if ((node.next == null)) {
+        if (node == null || node.next == null) {
             return node;
         }
         Node newHead = reverseRecursively(node.next);
