@@ -16,27 +16,29 @@ public class ReverseLinkedList {
 
         linkedList.print(); //     1->2->3->4
         //reverseIterative(linkedList);
-       linkedList.head = reverseRecursively(linkedList.head);
+       linkedList.head = reverseIterative(linkedList.head);
         System.out.println("After reverse");
         System.out.println();
         linkedList.print();
     }
 
-    public static void reverseIterative(LinkedList linkedList) {
-        Node pre = null;
-        Node current = linkedList.head;
+    public static Node reverseIterative(Node root){
+
+        Node prev = null;
+        Node current = root;
         Node next = null;
-        while (current != null) {
+
+        while(current != null){
             next = current.next;
-            current.next = pre;
-            pre = current;
+            current.next = prev;
+            prev = current;
             current = next;
         }
-        linkedList.head = pre;
+        return prev;
 
     }
 
-    //[1]->[2]->[3]->[4]      
+    //[1]->[2]->[3]->[4]
     public static Node reverseRecursively(Node node) {  //1 ->2 ->3 ->4
          //base case - tail of original linked list 
         if (node == null || node.next == null) {
