@@ -42,7 +42,7 @@ public class ReverseLinkedList {
         if (node == null || node.next == null) {
             return node;
         }
-        Node newHead = reverseRecursively(node.next);
+        Node newHead = reverseRecursively(node.next); // 4 ->3 ->2
         //reverse the link e.g. C->D->null will be null 
         node.next.next = node;                        
         node.next = null;
