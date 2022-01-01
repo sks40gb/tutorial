@@ -1,9 +1,27 @@
 package algorithm.recursive;
 
 /**
- * String to int
- * <p>
  * https://www.codingninjas.com/codestudio/problems/atoi_981270
+ * 
+ * 1. If the first char is ‘-’ it represents a minus sign and hence we return a
+ * negative integer.
+ * 2. If there is no number in the string, return 0.
+ * 3. It is guaranteed that the number is less than or equal to 10^9.
+ * 
+ * Sample Input:
+ * --------------------
+ * 12439
+ * -43534
+ * app546er
+ * cutedog
+ * 
+ * Sample Output :
+ * ----------------------
+ * 12439
+ * -43534
+ * 546
+ * 0
+ * 
  */
 public class ConvertStringToInt {
     public static void main(String[] args) {
@@ -27,7 +45,7 @@ public class ConvertStringToInt {
         char c = s.charAt(index);
         Integer output = null;
         if (isIntValue(c)) {
-            output =  parse(s, index - 1) * 10 + getIntValue(c);
+            output =  parse(s, index - 1) * 10 + Character.getNumericValue(c);
         } else {
             output = parse(s, index - 1);
         }
@@ -37,11 +55,9 @@ public class ConvertStringToInt {
     private static int negate(int number){
         return number * -1;
     }
-    private static int getIntValue(char c) {
-        return Integer.parseInt(String.valueOf(c));
-    }
 
     private static boolean isIntValue(char c) {
         return (c >= '0' && c <= '9');
     }
 }
+
