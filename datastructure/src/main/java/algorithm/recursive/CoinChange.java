@@ -81,13 +81,11 @@ public class CoinChange {
      * 55
      */
     private static void solution4(int[] coins, int k, int sum, String result, int index) {
-        if (index >= coins.length) {
+        if (index >= coins.length || sum > k) {
             return;
         }
         if (sum == k) {
             System.out.println(result);
-            return;
-        } else if (sum > k) {
             return;
         }
         solution4(coins, k, sum + coins[index], result + coins[index], index);
