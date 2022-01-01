@@ -2,6 +2,19 @@ package algorithm.recursive;
 
 import java.util.Stack;
 
+/**
+ * https://www.geeksforgeeks.org/delete-middle-element-stack/
+ * 
+ * Given a stack with push(), pop(), empty() operations, delete middle of it
+ * without using any additional data structure.
+ * 
+ * Input : Stack[] = [1, 2, 3, 4, 5]
+ * Output : Stack[] = [1, 2, 4, 5]
+ * 
+ * Input : Stack[] = [1, 2, 3, 4, 5, 6]
+ * Output : Stack[] = [1, 2, 4, 5, 6]
+ * 
+ */
 public class RemoveMiddleElementFromStack {
 
     public static void main(String[] args) {

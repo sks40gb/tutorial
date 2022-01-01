@@ -37,11 +37,39 @@ public class Rotate90Degree {
         int[][] output = new int[input.length][input.length];
         int l = input.length;
         for (int i = 0; i < l; i++) {
-            for (int j = 0; j < input[i].length; j++) {  // [1,2,3]
+            for (int j = 0; j < input[i].length; j++) { // [1,2,3]
                 int value = input[i][j];
                 output[j][l - i - 1] = value;
             }
         }
         return output;
+    }
+    
+    /**
+     * Approach: We first transpose the given matrix, and then reverse the content
+     * of individual rows to get the resultant 90 degree clockwise rotated matrix.
+     */
+    static void rotate90clockwise(int mat[][]) {
+
+        int n = mat.length;
+        // Transpose of matrix
+        for (int i = 0; i < n; i++)
+            for (int j = i + 1; j < n; j++) {
+                int t = mat[i][j];
+                mat[i][j] = mat[j][i];
+                mat[j][i] = t;
+            }
+
+        // Reverse individual rows
+        for (int i = 0; i < n; i++) {
+            int low = 0, high = n - 1;
+            while (low < high) {
+                int t = mat[i][low];
+                mat[i][low] = mat[i][high];
+                mat[i][high] = t;
+                low++;
+                high--;
+            }
+        }
     }
 }

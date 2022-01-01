@@ -1,5 +1,11 @@
 package algorithm.recursive;
 
+/**
+ * Below are the permutations of string ABC.
+ * ABC ACB BAC BCA CBA CAB
+ * 
+ * https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
+ */
 public class PermutationOfString {
 
     public static void main(String[] args) {

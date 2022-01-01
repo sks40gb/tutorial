@@ -1,5 +1,21 @@
 package algorithm.recursive;
 
+/**
+ * https://www.geeksforgeeks.org/remove-consecutive-duplicates-string/
+ * 
+ * Given a string S, remove all the consecutive duplicates. Note that this
+ * problem is different from Recursively remove all adjacent duplicates. Here we
+ * keep one character and remove all subsequent same characters.
+ * 
+ * Input : aaaaabbbbbb
+ * Output : ab
+ * 
+ * Input : geeksforgeeks
+ * Output : geksforgeks
+ * 
+ * Input : aabccba
+ * Output : abcba
+ */
 public class RemoveConsecutiveDuplicates {
     public static void main(String[] args) {
         System.out.println(removeConsecutiveDuplicates("aazbbby"));

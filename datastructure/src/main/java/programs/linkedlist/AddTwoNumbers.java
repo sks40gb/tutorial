@@ -1,91 +1,99 @@
 package programs.linkedlist;
 
 /**
- *  @TODO - yet to be implemented completely.
- * @author sunsingh
+ * https://www.geeksforgeeks.org/add-two-numbers-represented-by-linked-lists/
+ * 
+ * Given two numbers represented by two lists, write a function that returns the
+ * sum list. The sum list is a list representation of the addition of two input
+ * numbers.
+ * 
+ * Input:
+ * List1: 5->6->3 // represents number 563
+ * List2: 8->4->2 // represents number 842
+ * 
+ * Output:
+ * Resultant list: 1->4->0->5 // represents number 1405
+ * 
  */
 public class AddTwoNumbers {
 
-    public static void main(String[] args) {
-        LinkedList first = new LinkedList();
-        first.add(6);
-        first.add(8);
-        first.add(9);
-        first.add(5);
-        first.add(6);
-        first.add(3);
+    static Node head1, head2;
 
-        LinkedList second = new LinkedList();
-        second.add(8);
-        second.add(4);
-        second.add(2);
+    static class Node {
 
-        addNumbers(first.head, second.head);
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
     }
 
-    public static void addNumbers(Node first, Node second) {
-        LinkedList result = new LinkedList();
-        int diff = LengthDiff(length(first), length(second));
-        Node a = first;
-        Node b = second;
-        if (diff < 0) {
-            a = second;
-            b = first;
-            
+    /* Adds contents of two linked lists and prints it */
+    void addTwoLists(Node first, Node second) {
+        Node start1 = new Node(0);
+        start1.next = first;
+        Node start2 = new Node(0);
+        start2.next = second;
+
+        addPrecedingZeros(start1, start2);
+        Node result = new Node(0);
+        if (sumTwoNodes(start1.next, start2.next, result) == 1) {
+            Node node = new Node(1);
+            node.next = result.next;
+            result.next = node;
         }
-        Node current = a;
-        //Move the node at the same length;
-        if (diff != 0) {
-            for (int i = 0; i < Math.abs(diff); i++) {
-                first = first.next;
+        printList(result.next);
+    }
+
+    /* Adds lists and returns the carry */
+    private int sumTwoNodes(Node first, Node second, Node result) {
+        if (first == null) {
+            return 0;
+        }
+        int number = first.data + second.data + sumTwoNodes(first.next, second.next, result);
+        Node node = new Node(number % 10);
+        node.next = result.next;
+        result.next = node;
+        return number / 10;
+    }
+
+    /*
+     * Appends preceding zeros in case a list is having lesser nodes than the other
+     * one
+     */
+    private void addPrecedingZeros(Node start1, Node start2) {
+        Node next1 = start1.next;
+        Node next2 = start2.next;
+        while (next1 != null && next2 != null) {
+            next1 = next1.next;
+            next2 = next2.next;
+        }
+        if (next1 == null && next2 != null) {
+            while (next2 != null) {
+                Node node = new Node(0);
+                node.next = start1.next;
+                start1.next = node;
+                next2 = next2.next;
+            }
+        } else if (next2 == null && next1 != null) {
+            while (next1 != null) {
+                Node node = new Node(0);
+                node.next = start2.next;
+                start2.next = node;
+                next1 = next1.next;
             }
         }
-        result.head = sum(first, second);
-        
-        //If first element has extra items in it.
-        while(current != first){
-            int sum = current.data + carry;
-            carry = sum/10;
-            sum = sum%10;
-            Node node = new Node(sum);
-            node.next = result.head;
-            result.head = node;
-            current = current.next;
-        }
-        
-        if (carry > 0) {
-            Node node = new Node(carry);
-            node.next = result.head;
-            result.head = node;
-        }
-        result.print();
     }
 
-    static int carry = 0;
-    
-    public static Node sum(Node first, Node second) {
-        if (first == null) {
-            return null;
+    /* Utility function to print a linked list */
+    void printList(Node head) {
+        while (head != null) {
+            System.out.print(head.data + " ");
+            head = head.next;
         }
-        Node result = new Node(0);
-        result.next = sum(first.next, second.next);
-        int sum = first.data + second.data + carry;
-        carry = sum / 10;
-        sum = sum % 10;
-        result.data = sum;
-        return result;
+        System.out.println("");
     }
 
-    public static int LengthDiff(int a, int b) {
-        return a - b;
-    }
-
-    public static int length(Node node) {
-        int length = 0;
-        while (node != null) {
-            length++;
-            node = node.next;
-        }
-        return length;
-    }
 }

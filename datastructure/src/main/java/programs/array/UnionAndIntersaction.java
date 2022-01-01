@@ -4,7 +4,6 @@ package programs.array;
  * Write a program to find intersection of two sorted arrays in Java Read more:
  * https://javarevisited.blogspot.com/2015/06/top-20-array-interview-questions-and-answers.html#ixzz5wPgp7wiz
  *
- * @author sunsingh
  */
 public class UnionAndIntersaction {
 
