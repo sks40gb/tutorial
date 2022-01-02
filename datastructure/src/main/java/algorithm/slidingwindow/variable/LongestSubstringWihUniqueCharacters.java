@@ -1,7 +1,9 @@
 package algorithm.slidingwindow.variable;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Find the longest substring with k unique characters in a given string
@@ -29,6 +31,32 @@ public class LongestSubstringWihUniqueCharacters {
         System.out.println(findLongestString(input, k));
     }
 
+    /**
+     * Using Set
+     */
+    public static int getLongestSubstring2(String input, int k){
+
+        int leftIndex = 0;
+        int max = Integer.MIN_VALUE;
+        Set<Character> set = new LinkedHashSet<>();
+        for(int rightIndex=0; rightIndex < input.length(); rightIndex++){
+            Character c = input.charAt(rightIndex);
+            set.add(c);
+            if(set.size() <= k){
+                max = Math.max(max, rightIndex - leftIndex + 1);
+            }else{
+                while(set.size() > k && leftIndex <= rightIndex){
+                    set.remove(c);
+                    leftIndex++;
+                }
+            }
+        }
+        return max;
+    }
+
+    /**
+     * Using Map
+     */
     private static int findLongestString(String input, int k) {
         int leftIndex = 0;
         int maxLength = 0;
