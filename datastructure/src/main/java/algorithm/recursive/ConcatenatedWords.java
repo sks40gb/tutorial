@@ -26,7 +26,7 @@ public class ConcatenatedWords {
 
         for (String word : words) {
             set.remove(word);
-            if (dfs(word, set, "")) {
+            if (dfs(word, set)) {
                 list.add(word);
             }
             set.add(word);
@@ -34,17 +34,15 @@ public class ConcatenatedWords {
         return list;
     }
 
-    private static boolean dfs(String word, Set<String> set, String previous) {
-        if (!previous.equals("")) {
-            set.add(previous);
-        }
+    private static boolean dfs(String word, Set<String> set) {
+
         if (set.contains(word)) {
             return true;
         }
         for (int i = 1; i < word.length(); i++) {
             String prefix = word.substring(0, i);
             String suffix = word.substring(i);
-            if (set.contains(prefix) && dfs(suffix, set, previous + prefix)) {
+            if (set.contains(prefix) && dfs(suffix, set)) {
                 return true;
             }
         }
