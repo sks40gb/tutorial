@@ -10,7 +10,7 @@ public class Test {
         int[] input = {3, 1, 5, 6, 4, 2};
         List<String> result = longestValid(input);
         for (String line : result) {
-            System.out.println(line);
+//            System.out.println(line);
         }
     }
 
@@ -19,29 +19,33 @@ public class Test {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < input.length; i++) {
             int min = Integer.MIN_VALUE;
-            findValidForElement(input, 0, i, min, result, "");
-
+            int max = findValidForElement(input, 0, i, min, result, "");
+            System.out.println(max);
         }
         return result;
     }
 
-    private static void findValidForElement(int[] input, int startIndex, int endIndex, int previousValue, List<String> result, String path) {
+    private static int findValidForElement(int[] input, int startIndex, int endIndex, int previousValue, List<String> result, String path) {
 
         int v = input[endIndex];
         if (startIndex >= endIndex) {
             path += "," + v;
             result.add(path);
-            return;
+            return 1;
         }
 
+        int max = 0;
         for (int i = startIndex; i < endIndex; i++) {
             int currentValue = input[i];
             if (currentValue < v && currentValue > previousValue) {
-                findValidForElement(input, i + 1, endIndex, currentValue, result, path + "," + currentValue);
+                int m = findValidForElement(input, i + 1, endIndex, currentValue, result, path + "," + currentValue) + 1;
+                max = Math.max(m, max);
             }else{
-                findValidForElement(input, i + 1, endIndex, previousValue, result, path);
+                int m = findValidForElement(input, i + 1, endIndex, previousValue, result, path);
+                max = Math.max(m, max);
             }
         }
+        return max;
     }
 
 
