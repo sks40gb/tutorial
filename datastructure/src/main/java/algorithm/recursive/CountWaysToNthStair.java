@@ -1,5 +1,7 @@
 package algorithm.recursive;
 
+import java.util.Arrays;
+
 /**
  * https://www.geeksforgeeks.org/count-ways-reach-nth-stair-using-step-1-2-3/
  *
@@ -19,23 +21,45 @@ package algorithm.recursive;
 public class CountWaysToNthStair {
 
     public static void main(String args[]) {
-        int n = 4;
-        System.out.println(findStepRecursive(n));
+        int n = 12;
+        System.out.println(findWaysRecursive(n));
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, -1);
+        System.out.println(findWaysRecursiveDP(n, dp));
+        System.out.println(countWaysIterativeDP(n));
     }
 
-    public static int findStepRecursive(int n) {
+
+    private static int findWaysRecursive(int n) {
         if (n == 0) {
-
-            return 0;
-        } else if (n < 0) {
-            return 0;
-        } else {
-            return findStepRecursive(n - 3) + findStepRecursive(n - 2)
-                + findStepRecursive(n - 1);
+            return 1;
         }
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        return findWaysRecursive(n - 1) + findWaysRecursive(n - 2) + findWaysRecursive(n - 3);
     }
 
-    public static int countWaysIterative(int n) {
+    private static int findWaysRecursiveDP(int n, int[] dp) {
+        if (dp[n] != -1) {
+            return dp[n];
+        }
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        return dp[n] = findWaysRecursiveDP(n - 1, dp) + findWaysRecursiveDP(n - 2, dp) + findWaysRecursiveDP(n - 3, dp);
+    }
+
+    public static int countWaysIterativeDP(int n) {
         int[] res = new int[n + 1];
         res[0] = 1;
         res[1] = 1;
