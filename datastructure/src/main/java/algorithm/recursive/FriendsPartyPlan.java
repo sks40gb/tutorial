@@ -20,6 +20,7 @@ public class FriendsPartyPlan {
         int[] dp = new int[input.length() + 1];
         Arrays.fill(dp, -1);
         System.out.println("With dynamic programming :  " + findWays3(input.length(), dp));
+        System.out.println(findWays4(input.length()));
     }
 
     /**
@@ -55,6 +56,19 @@ public class FriendsPartyPlan {
             return n;
         }
         return findWays2(n - 1) + (n - 1) * findWays2(n - 2);
+    }
+
+    /**
+     * Iterative
+     */
+    public static int findWays4(int n){
+        int[] res = new int[n+1];
+        res[1] = 1;
+        res[2] = 2;
+        for (int i = 3; i <= n ; i++) {
+            res[i] = res[i-1] + (i-1) * res[i-2];
+        }
+        return res[n];
     }
 
     /**
