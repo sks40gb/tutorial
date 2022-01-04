@@ -40,6 +40,9 @@ public class CountWaysToNthStair {
         if (n == 2) {
             return 2;
         }
+        if (n == 3) {
+            return 1 + findWaysRecursive(n - 1) + findWaysRecursive(n - 2);
+        }
         return findWaysRecursive(n - 1) + findWaysRecursive(n - 2) + findWaysRecursive(n - 3);
     }
 
