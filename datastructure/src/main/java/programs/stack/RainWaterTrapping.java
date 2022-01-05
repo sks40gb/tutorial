@@ -4,12 +4,12 @@ import java.util.Stack;
 
 /**
  * https://www.geeksforgeeks.org/trapping-rain-water/
- * <p>
+ *
  * Example :
- * <p>
+ *
  * Input : {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
  * Output : 6
- * <p>
+ *
  * Input : {3, 0, 2, 0, 4}
  * Output : 7
  */
