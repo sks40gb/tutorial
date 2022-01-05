@@ -12,19 +12,19 @@ public class Sort_an_array_of_zero_one_two {
 
     public static void sort(int[] arr) {
         int left = 0;
-        int index = 0;
+        int middle = 0;
         int right = arr.length - 1;
-        while (index <= right) {
-            int value = arr[index];
+        while (middle <= right) {
+            int value = arr[middle];
             if (value == 0) {
-                swap(arr, left, index);
+                swap(arr, left, middle);
                 left++;
-                index++;
-            } else if (value == 2) {
-                swap(arr, right, index);
-                right--;
+                middle++;
             } else if (value == 1) {
-                index++;
+                middle++;
+            } else if (value == 2) {
+                swap(arr, right, middle);
+                right--;
             }
         }
     }
