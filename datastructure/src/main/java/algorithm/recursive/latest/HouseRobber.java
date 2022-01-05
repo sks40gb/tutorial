@@ -16,17 +16,22 @@ package algorithm.recursive.latest;
  * Output: 4
  * Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
  * Total amount you can rob = 1 + 3 = 4.
+ *
+ * #google
  */
 public class HouseRobber {
 
     public static void main(String[] args) {
-        int[] input = {2, 7, 9}; // 12
+        int[] input = {2,7,9,3,1};
         System.out.println(rob(input, 0));
         System.out.println(rob2(input, input.length - 1));
         System.out.println(robDP(input));
     }
 
-    // Recursive method 1
+    /**
+     * Method 1
+     * Note : use Memoization to increase the performance
+     */
     public static int rob(int[] input, int index) {
         if (index == input.length - 1) {
             return input[index];
@@ -46,6 +51,9 @@ public class HouseRobber {
         }
         if (index == 0) {
             return input[0];
+        }
+        if(index == 1){
+            return Math.max(input[0], input[1]);
         }
         int robIt = input[index] + rob2(input, index - 2);
         int skipIt = rob2(input, index - 1);
