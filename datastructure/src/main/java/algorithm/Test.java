@@ -3,95 +3,51 @@ package algorithm;
 public class Test {
 
     public static void main(String[] args) {
-        int[] tops    = {2,1,2,4,2,2};
-        int[] bottoms = {5,9,6,2,3,2};
-        System.out.println(dominoes(tops, bottoms));
+        int[][] matrix = {
+            {0, 0, 1, 1},
+            {0, 0, 1, 1},
+            {1, 1, 1, 0}
+        };
+        System.out.println(solve(matrix, 0, 0, 1));
     }
 
-    static int dominoes(int[] a, int[] b) {
-        int first = a[0];
-        int second = b[0];
+    private static boolean solve(int[][] matrix, int row, int col, int n) {
 
-        int swap1 = 0;
-        for (int i = 1; i < a.length; i++) {
-            if (first == a[i]) {
-                continue;
-            }
-            if (first == b[i]) {
-                swap1++;
-                continue;
-            }
-            swap1 = -1;
+        if (row < 0
+            || col < 0 //not beyond top
+            || row >= matrix.length // not row to the left
+            || col >= matrix[0].length
+            || matrix[row][col] == -1
+            || (matrix[row][col] == 1 && n == 0)) {
+            return false;
         }
 
-        int swap2 = 0;
-        for (int i = 1; i < a.length; i++) {
-            if (first == b[i]) {
-                continue;
-            }
-            if (first == a[i]) {
-                swap2++;
-                continue;
-            }
-            swap2 = -1;
+        if (row == matrix.length - 1 && col == matrix[0].length - 1) {
+            System.out.println("found " + row + "," + col + " v :" + matrix[row][col]);
+            return true;
+
         }
 
-        int swap3 = 0;
-        for (int i = 1; i < a.length; i++) {
-            if (second == b[i]) {
-                continue;
-            }
-            if (second == a[i]) {
-                swap3++;
-                continue;
-            }
-            swap3 = -1;
+        System.out.println(row + "," + col + " v: " + matrix[row][col]);
+
+        int preValue = matrix[row][col];
+        if (matrix[row][col] == 1) {
+            n--;
         }
 
+        matrix[row][col] = -1;
+        System.out.println(" starting from " + row + "," + col);
 
-        int swap4 = 0;
-        for (int i = 1; i < a.length; i++) {
-            if (first == b[i]) {
-                continue;
+        int[][] DIRECTIONS = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        for (int d = 0; d < DIRECTIONS.length; d++) {
+            if (solve(matrix, row + DIRECTIONS[d][0], col + DIRECTIONS[d][1], n)) {
+                return true;
             }
-            if (first == a[i]) {
-                swap4++;
-                continue;
-            }
-            swap4 = -1;
         }
-        return min(swap1, swap2, swap3, swap4);
+        matrix[row][col] = preValue;
 
-
+        return false;
     }
 
-    private static int match(int v, int[] a, int[] b){
-        int swap = 0;
-        for (int i = 1; i < a.length; i++) {
-            if (v == b[i]) {
-                continue;
-            }
-            if (v == a[i]) {
-                swap++;
-                continue;
-            }
-            swap = -1;
-        }
-        return swap;
-    }
-
-    private static int min(Integer ... numbers) {
-        int min = -1;
-        for (int n : numbers) {
-            if(n != -1){
-                if(min == -1){
-                    min = n;
-                }else{
-                     min = Math.min(min, n);
-                }
-            }
-        }
-        return min;
-    }
 
 }
