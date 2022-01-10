@@ -23,6 +23,8 @@ public class Test {
                     board[i][j] = 0;
                 }
             }
+            // If queen cannot be placed in row,
+            // no need to iterate to next row
             return false;
         }
         return false;
