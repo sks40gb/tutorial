@@ -2,11 +2,10 @@ package algorithm.recursive;
 
 /**
  * https://www.geeksforgeeks.org/n-queen-problem-backtracking-3/
- * 
+ *
  * The N Queen is the problem of placing N chess queens on an N×N chessboard so
  * that no two queens attack each other. For example, following is a solution
  * for 4 Queen problem.
- * 
  */
 public class NQueen {
     public static void main(String[] args) {
@@ -18,14 +17,17 @@ public class NQueen {
         print(board);
     }
 
-    //check in row
+    /**
+     * Solution 1
+     *
+     * Check each row
+     */
     private static boolean queenPlaced(int[][] board, int row) {
-        
+
         //means all queens are placed successfully.
         if (row >= board.length) {
             return true;
         }
-
         //check in all columns for row
         for (int col = 0; col < board.length; col++) {
             if (isSafe(board, row, col)) {
@@ -35,6 +37,29 @@ public class NQueen {
                 }
                 board[row][col] = 0;
             }
+        }
+        return false;
+    }
+
+    /**
+     * Solution 2
+     * Another simple version of solution 1
+     */
+    private static boolean queenPlaced2(int[][] board, int row, int k) {
+        if (k == 0) {
+            return true;
+        }
+        for (int i = row; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                if (isSafe(board, i, j)) {
+                    board[i][j] = 1;
+                    if (queenPlaced2(board, row + 1, k - 1)) {
+                        return true;
+                    }
+                    board[i][j] = 0;
+                }
+            }
+            return false;
         }
         return false;
     }

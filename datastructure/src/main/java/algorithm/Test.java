@@ -3,26 +3,27 @@ package algorithm;
 public class Test {
     public static void main(String[] args) {
 
-        int n = 8;
+        int n = 4;
         int[][] board = new int[n][n];
-        int row = 0;
-        System.out.println(queenPlaced(board, row));
+        System.out.println(queenPlaced(board, 0, n));
         print(board);
     }
 
-    private static boolean queenPlaced(int[][] board, int row) {
-        //means all queens are placed successfully.
-        if (row >= board.length) {
+    private static boolean queenPlaced(int[][] board, int row, int k) {
+        if (k == 0) {
             return true;
         }
-        for (int col = 0; col < board.length; col++) {
-            if (isSafe(board, row, col)) {
-                board[row][col] = 1;
-                if (queenPlaced(board, row + 1)) {
-                    return true;
+        for (int i = row; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                if (isSafe(board, i, j)) {
+                    board[i][j] = 1;
+                    if (queenPlaced(board, row + 1, k - 1)) {
+                        return true;
+                    }
+                    board[i][j] = 0;
                 }
-                board[row][col] = 0;
             }
+            return false;
         }
         return false;
     }
