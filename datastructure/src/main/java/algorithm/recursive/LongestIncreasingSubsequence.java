@@ -26,6 +26,8 @@ package algorithm.recursive;
  *
  * Input: nums = [7,7,7,7,7,7,7]
  * Output: 1
+ * 
+ * https://leetcode.com/problems/longest-increasing-subsequence/
  */
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
@@ -45,6 +47,5 @@ public class LongestIncreasingSubsequence {
         }
         return Math.max(take, dontTake);
     }
-
 
 }
