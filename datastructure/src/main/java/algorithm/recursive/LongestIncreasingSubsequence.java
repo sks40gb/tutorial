@@ -26,13 +26,14 @@ package algorithm.recursive;
  *
  * Input: nums = [7,7,7,7,7,7,7]
  * Output: 1
- * 
+ *
  * https://leetcode.com/problems/longest-increasing-subsequence/
  */
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
         int[] input = {10, 9, 2, 5, 3, 7, 101, 18};
         System.out.println(findLongest(input, 0, Integer.MIN_VALUE));
+        System.out.println(findLongestRecursively(input, input.length - 1, Integer.MAX_VALUE));
     }
 
     public static int findLongest(int[] input, int n, int prev) {
@@ -46,6 +47,22 @@ public class LongestIncreasingSubsequence {
             take = 1 + findLongest(input, n + 1, input[n]);
         }
         return Math.max(take, dontTake);
+    }
+
+    public static int findLongestRecursively(int[] input, int n, int next) {
+        if (n <= -1) {
+            return 0;
+        }
+        int take = 0;
+        int dontTake = findLongestRecursively(input, n - 1, input[n]);
+        if (next > input[n]) {
+            take = 1 + findLongestRecursively(input, n - 1, input[n]);
+        }
+        return Math.max(take, dontTake);
+    }
+
+    public static int findLongestIterative(int[] input) {
+        return 0;
     }
 
 }
