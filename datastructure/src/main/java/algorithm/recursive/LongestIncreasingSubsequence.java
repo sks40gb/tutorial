@@ -31,9 +31,10 @@ package algorithm.recursive;
  */
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
-        int[] input = {10, 9, 2, 5, 3, 7, 101, 18};
+        int[] input = {4,10,4,3,8,9};
         System.out.println(findLongest(input, 0, Integer.MIN_VALUE));
         System.out.println(findLongestRecursively(input, input.length - 1, Integer.MAX_VALUE));
+        System.out.println(findLongestIterative(input));
     }
 
     public static int findLongest(int[] input, int n, int prev) {
@@ -61,8 +62,41 @@ public class LongestIncreasingSubsequence {
         return Math.max(take, dontTake);
     }
 
+
     public static int findLongestIterative(int[] input) {
-        return 0;
+        int n = input.length;
+        int[] dp = new int[n+1];
+        dp[0] = 0;
+        int pre = Integer.MIN_VALUE;
+        for (int i = 0; i < input.length; i++) {
+            int dontTake = dp[i];
+            int take = 0;
+            if(pre < input[i]){
+                take = 1 + dp[i];
+            }
+            dp[i+1] = Math.max(take, dontTake);
+            pre = input[i];
+        }
+        return dp[n];
+    }
+
+
+    public static int findLongestIterative2(int[] input) {
+        int n = input.length;
+        int[] dp = new int[n+1];
+        dp[0] = 0;
+        int next = Integer.MAX_VALUE;
+
+        for (int i = input.length - 1; i > 0 ; i--) {
+            int dontTake = dp[i-1];
+            int take = 0;
+            if(next > input[i]){
+                take = 1 + dp[i-1];
+            }
+            dp[i] = Math.max(dontTake, take);
+            next = input[i];
+        }
+        return dp[n];
     }
 
 }
