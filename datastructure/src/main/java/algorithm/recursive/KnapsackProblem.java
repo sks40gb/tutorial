@@ -23,11 +23,15 @@ public class KnapsackProblem {
     public static void main(String[] args) {
         int[] val = new int[]{60, 100, 120};
         int[] wt = new int[]{10, 20, 30};
-        int W = 50;
+        int W = 40;
         System.out.println(knapSack(val, wt, W, 0, 0));
+        System.out.println(knapSack2(val, wt, W, val.length));
 
     }
 
+    /**
+     * Recursive version 1
+     */
     private static int knapSack(int[] val, int[] wt, int k, int index, int totalWeight) {
 
         if (index >= wt.length) {
@@ -39,6 +43,22 @@ public class KnapsackProblem {
         } else {
             int with = val[index] + knapSack(val, wt, k, index + 1, totalWeight + wt[index]);
             int without = knapSack(val, wt, k, index + 1, totalWeight);
+            return Math.max(with, without);
+        }
+    }
+
+    /**
+     * Recursive Version 2 : This method can be turned into Tabulation (Bottom Up)
+     */
+    private static int knapSack2(int[] val, int[] wt, int W, int index) {
+        if (index == 0 || W == 0) {
+            return 0;
+        }
+        if (W - wt[index - 1] < 0) {
+            return knapSack2(val, wt, W, index - 1);
+        } else {
+            int with = val[index - 1] + knapSack2(val, wt, W - wt[index - 1], index - 1);
+            int without = knapSack2(val, wt, W, index - 1);
             return Math.max(with, without);
         }
     }
