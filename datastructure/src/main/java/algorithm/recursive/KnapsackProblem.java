@@ -51,7 +51,7 @@ public class KnapsackProblem {
     /**
      * Recursive Version 2 : This method can be turned into Tabulation (Bottom Up)
      */
-    static int knapSack(int W, int wt[], int val[], int n) {
+    static int knapSack(int W, int[] wt, int[] val, int n) {
         if (n == 0 || W == 0)
             return 0;
 
@@ -70,9 +70,9 @@ public class KnapsackProblem {
     /**
      * Iterative version of above format
      */
-    static int knapSackDP(int W, int wt[], int val[], int n) {
+    static int knapSackDP(int W, int[] wt, int[] val, int n) {
         int i, w;
-        int K[][] = new int[n + 1][W + 1];
+        int[][] K = new int[n + 1][W + 1];
 
         for (i = 0; i <= n; i++) {
             for (w = 0; w <= W; w++) {
