@@ -4,9 +4,7 @@ public class MatrixUtil {
 
     public static void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
-            for (int col : row) {
-                System.out.print(col + " ");
-            }
+            printArray(row);
             System.out.println("");
         }
 
