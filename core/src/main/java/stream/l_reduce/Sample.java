@@ -4,6 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/*
+
+    Optional<T> reduce(BinaryOperator<T> accumulator)
+
+    T reduce(T identity, BinaryOperator<T> accumulator)
+
+ */
 public class Sample {
 
     public static void main(String[] args) {
