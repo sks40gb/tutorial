@@ -24,7 +24,7 @@ public class FriendsPartyPlan {
     }
 
     /**
-     * Not a actual solution but to explain the recursion.
+     * Not an actual solution but to explain the recursion.
      */
     public static int findWays1(String input, String output) {
         if (input.length() == 0) {
@@ -49,7 +49,7 @@ public class FriendsPartyPlan {
     }
 
     /**
-     * Simple Solution
+     * Recursive Solution
      */
     public static int findWays2(int n) {
         if (n == 1 || n == 2) {
