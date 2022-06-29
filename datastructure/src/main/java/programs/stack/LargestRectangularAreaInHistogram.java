@@ -5,34 +5,34 @@ import java.util.Stack;
 public class LargestRectangularAreaInHistogram {
 
     public static void main(String[] args) {
-        int[] input =  {6, 2, 5, 4, 5, 1, 6};
-        System.out.println(maxArea(input));
+        int[] input = {6, 2, 5, 4, 5, 1, 6};
+        System.out.println(new LargestRectangularAreaInHistogram().largestRectangleArea(input));
     }
 
-    public static int maxArea(int[] input){
-        int[] left = getLeftDistance(input);
-        int[] right = getRightDistance(input);
+    public int largestRectangleArea(int[] input) {
 
-        int maxArea = 0;
-        for(int i=0; i < input.length; i++){
-            int area = input[i] * (right[i] - left[i] - 1);
-            maxArea = Math.max(maxArea, area);
+        int[] leftMinIndices = getLeftMinIndices(input);
+        int[] rightMinIndices = getRightMinIndices(input);
+
+        int max = 0;
+        for (int i = 0; i < leftMinIndices.length; i++) {
+            int left = leftMinIndices[i] == -1 ? 0 : leftMinIndices[i] + 1;
+            int right = rightMinIndices[i] == -1 ? input.length - 1 : rightMinIndices[i] - 1;
+            max = Math.max(max, (right - left + 1) * input[i]);
         }
-        return maxArea;
+        return max;
     }
 
-    private static int[] getLeftDistance(int[] input){
-
-        Stack<Integer> stack = new Stack<>();
+    private int[] getLeftMinIndices(int[] input) {
         int[] result = new int[input.length];
-
-        for(int i =0; i < input.length; i++){
-            while(!stack.empty() && input[stack.peek()] > input[i]){
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < input.length; i++) {
+            while (!stack.isEmpty() && input[stack.peek()] >= input[i]) {
                 stack.pop();
             }
-            if(stack.empty()){
+            if (stack.isEmpty()) {
                 result[i] = -1;
-            }else{
+            } else {
                 result[i] = stack.peek();
             }
             stack.push(i);
@@ -40,23 +40,22 @@ public class LargestRectangularAreaInHistogram {
         return result;
     }
 
-    private static int[] getRightDistance(int[] input){
-
-        Stack<Integer> stack = new Stack<>();
+    private int[] getRightMinIndices(int[] input) {
         int[] result = new int[input.length];
-
-        for(int i = input.length - 1;i >=  0; i--){
-            while(!stack.empty() && input[stack.peek()] > input[i]){
+        Stack<Integer> stack = new Stack<>();
+        for (int i = input.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && input[stack.peek()] >= input[i]) {
                 stack.pop();
             }
-            if(stack.empty()){
-                result[i] =i+1;
-            }else{
+            if (stack.isEmpty()) {
+                result[i] = -1;
+            } else {
                 result[i] = stack.peek();
             }
             stack.push(i);
         }
         return result;
     }
+
 
 }
