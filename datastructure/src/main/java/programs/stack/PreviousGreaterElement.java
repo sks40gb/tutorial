@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Input    :   {1, 6, 4, 10, 2, 5}
- * Output   :   {-1,-1, 6, -1, 10, 10}
+ * Input    :   { 1, 6, 4, 10 ,2 , 5 }
+ * Output   :   {-1,-1, 6, -1 ,10, 10}
  */
 public class PreviousGreaterElement {
 
