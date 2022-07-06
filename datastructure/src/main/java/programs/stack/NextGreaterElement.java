@@ -34,4 +34,22 @@ class NextGreaterElement {
         return result;
     }
 
+    private static int[] previousGreaterElement_v2(int[] input) {
+        int[] result = new int[input.length];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = input.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && input[i] > stack.peek()) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                result[i] = -1;
+            } else {
+                result[i] = stack.peek();
+            }
+            stack.push(input[i]);
+        }
+        return result;
+    }
+
+
 }
